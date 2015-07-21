@@ -25,12 +25,12 @@
 #include <iomanip>
 
 
-int a3_addBkgsTogether(double metCut, double ptCut, double ecaloCut, double iasCut, TString region){
+int a4_addBkgsTogether(double metCut, double ptCut, double ecaloCut, double iasCut, TString region){
 
   TFile *fPions     = new TFile(Form("results/Bkg211_metCutEq%.0f_ptCutEq%0.f_ECaloCutEq%.0f_IasCutEq0p%02.0f_",metCut,ptCut,ecaloCut,iasCut*100) + region + ".root", "READ");
   TFile *fElectrons = new TFile(Form("results/Bkg11_metCutEq%.0f_ptCutEq%0.f_ECaloCutEq%.0f_IasCutEq0p%02.0f_",metCut,ptCut,ecaloCut,iasCut*100) + region + ".root","READ");
   TFile *fMuons     = new TFile(Form("results/Bkg13_metCutEq%.0f_ptCutEq%0.f_ECaloCutEq%.0f_IasCutEq0p%02.0f_",metCut,ptCut,ecaloCut,iasCut*100) + region + ".root","READ");
-  TFile *fFakes     = new TFile(Form("../fakes/results/fakeBkg_metCutEq%.0f_ptCutEq%0.f_ECaloCutEq%.0f_IasCutEq0p%02.0f.root",metCut,ptCut,ecaloCut,iasCut*100),"READ");
+  TFile *fFakes     = new TFile(Form("../fakeBkg/results/fakeBkg_metCutEq%.0f_ptCutEq%0.f_ECaloCutEq%.0f_IasCutEq0p%02.0f.root",metCut,ptCut,ecaloCut,iasCut*100),"READ");
   TFile *fData      = new TFile(Form("results/DataYield_metCutEq%.0f_ptCutEq%0.f_ECaloCutEq%.0f_IasCutEq0p%02.0f_",metCut,ptCut,ecaloCut,iasCut*100) + region + ".root","READ");
 
   TGraphAsymmErrors * gPions     = 0;
@@ -143,7 +143,7 @@ int a3_addBkgsTogether(double metCut, double ptCut, double ecaloCut, double iasC
   fake   -> Write();
   out->Close();
 
-  //if(region=="SR") return 0;
+  if(region=="SR") return 0;
 
   n = hData->Integral();
   cout.precision(0);
