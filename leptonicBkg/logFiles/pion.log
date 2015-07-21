@@ -1,0 +1,36 @@
+
+Processing a1_getScalingFactors.C+(211,100,110,0,40,5,"SR")...
+###########################################################################
+Statisitcs for 211 : pt=40 ECalo=5
+Signal region          = 0
+Control region         = 54
+Purity in CR           = 100.00%
+scaling factor         = 0.00e+00 + 2.13e-02 - 0.00e+00
+###########################################################################
+(int)0
+
+Processing a1a_makeTemplates.C+(211,100,110,40,5,0.3,"SR")...
+histoName = lepton_bkg_data_Iascut_0p30
+Entries: 92
+2nd bin: 1.0534 +/- 1.0534
+(int)0
+
+Processing a2_getLeptonPrediction.C+(211,100,110,40,0.3,0,5,"SR")...
+
+Get leptonic bkg prediction in SR.
+scaling factor         = 0.000e+00 + 2.126e-02 - 0.000e+00
+Data Yield (CR)        = 92.000
+nSRInclusive  (211)     = 0.000 + 1.956 - 0.000
+Ias template from : templates/IasTemplate_METGt100_JetPtGt110_trackPtGt40_ECaloEq5_pdgId211.root
+histogram         = lepton_bkg_data_Iascut_0p30
+histoIas->GetBinContent(1) = 0.988
+histoIas->GetBinContent(2) = 0.012
+nEntries = 92
+Ias = 0.012 +/- 0.012
+###########################################################################
+Statisitcs for 211 : pt=40.00 ECalo=5.00
+NEntries in Ias histo  = 92.00
+NEntries in high Ias = 1.13 +/- 0.01
+###########################################################################
+nSR  (211)             = 0.00 + 0.02 - 0.00
+(int)0
