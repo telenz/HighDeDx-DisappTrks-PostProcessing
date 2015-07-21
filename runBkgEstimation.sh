@@ -18,3 +18,5 @@ source estimateLeptonicBkg.sh
 #source estimateBkgUncertainties.sh
 
 cd ../
+
+rm *~
