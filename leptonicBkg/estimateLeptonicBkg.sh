@@ -9,28 +9,28 @@ rm *log
 rm datacards/*
 
 ## 1.) Get scaling factors s = N_MC^SR/N_MC^CR
-root -l -b -q a1_getScalingFactors.C+"(211,${metCut},${jetptCut},0,${ptCut},${ecaloCut},\"${region}\")" > pion.log
-root -l -b -q a1_getScalingFactors.C+"(11,${metCut},${jetptCut},0,${ptCut},${ecaloCut},\"${region}\")"  > elec.log
-root -l -b -q a1_getScalingFactors.C+"(13,${metCut},${jetptCut},1,${ptCut},${ecaloCut},\"${region}\")"  > muon.log
+root -l -b -q a1_getScalingFactors.C+"(211,${metCut},${jetptCut},0,${ptCut},${ecaloCut},\"${region}\")" > logFiles/pion.log
+root -l -b -q a1_getScalingFactors.C+"(11,${metCut},${jetptCut},0,${ptCut},${ecaloCut},\"${region}\")"  > logFiles/elec.log
+root -l -b -q a1_getScalingFactors.C+"(13,${metCut},${jetptCut},1,${ptCut},${ecaloCut},\"${region}\")"  > logFiles/muon.log
 
 ## 1a.) Get Ias template
-root -l -b -q a2_makeTemplates.C+"(211,${metCut},${jetptCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")" >> pion.log
-root -l -b -q a2_makeTemplates.C+"(11,${metCut},${jetptCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")"  >> elec.log
-root -l -b -q a2_makeTemplates.C+"(13,${metCut},${jetptCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")"  >> muon.log
+root -l -b -q a2_makeTemplates.C+"(211,${metCut},${jetptCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")" >> logFiles/pion.log
+root -l -b -q a2_makeTemplates.C+"(11,${metCut},${jetptCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")"  >> logFiles/elec.log
+root -l -b -q a2_makeTemplates.C+"(13,${metCut},${jetptCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")"  >> logFiles/muon.log
 
 
 ## 2.) Get leptonic bkg prediction
-root -l -b -q a3_getLeptonPrediction.C+"(211,${metCut},${jetptCut},${ptCut},${iasCut},0,${ecaloCut},\"${region}\")" >> pion.log
-cat pion.log
-root -l -b -q a3_getLeptonPrediction.C+"(11,${metCut},${jetptCut},${ptCut},${iasCut},0,${ecaloCut},\"${region}\")" >> elec.log
-cat elec.log
-root -l -b -q a3_getLeptonPrediction.C+"(13,${metCut},${jetptCut},${ptCut},${iasCut},1,${ecaloCut},\"${region}\")" >> muon.log
-cat muon.log
+root -l -b -q a3_getLeptonPrediction.C+"(211,${metCut},${jetptCut},${ptCut},${iasCut},0,${ecaloCut},\"${region}\")" >> logFiles/pion.log
+cat logFiles/pion.log
+root -l -b -q a3_getLeptonPrediction.C+"(11,${metCut},${jetptCut},${ptCut},${iasCut},0,${ecaloCut},\"${region}\")" >> logFiles/elec.log
+cat logFiles/elec.log
+root -l -b -q a3_getLeptonPrediction.C+"(13,${metCut},${jetptCut},${ptCut},${iasCut},1,${ecaloCut},\"${region}\")" >> logFiles/muon.log
+cat logFiles/muon.log
 
 
 ## 3.) Add all bks together
 root -l -b -q   a4_addBkgsTogether.C+"(${metCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")" > results.log
-cat results.log
+cat logFiles/results.log
 
 
 #rm a1_getScalingFactors_C.*
