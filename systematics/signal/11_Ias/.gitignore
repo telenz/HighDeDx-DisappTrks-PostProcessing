@@ -1,1 +1,9 @@
 *.root
+**/*.so
+**/*.d
+ANALYSIS
+*.so
+*.d
+**/*.o
+
+

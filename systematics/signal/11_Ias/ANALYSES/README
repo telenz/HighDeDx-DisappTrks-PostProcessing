@@ -1,0 +1,76 @@
+
+----------------------------
+ set up the environment
+----------------------------
+$ source /afs/desy.de/user/t/tlenz/myAnalysis/bkgEstimation/systematics/signal/11_Ias/IasUncertainty/setenv.sh
+
+----------------------------
+ set up the ntuple analyzer
+----------------------------
+your directory with analyzers should be $MYPROJECTDIR/analyzers
+move the content of your current directory with analyzers to $MYPROJECTDIR/analyzers,
+or replace $MYPROJECTDIR/analyzers with a soft link to your directory with analyzers
+
+----------------------------
+ define sample sets
+----------------------------
+inside $MYPROJECTDIR/data/samples, create a text file
+$MYPROJECTDIR/data/samples/<sample set name>.txt
+with sample set name e.g. ntuple_V1
+add one line per sample of ntuples, e.g.
+--
+sampleName1 /path/to/dir/with/ntuples/for/sampleName1
+sampleName2 /path/to/dir/with/ntuples/for/sampleName2,/path/to/otherDir/with/ntuples/for/sampleName2
+...
+--
+the first element in each line is used as sample name,
+the second element in each line lists the directories with ntuples for the respective sample
+directories can be ordinary or dcache (storage element) directories
+syntax for dcache directories: /pnfs/.../your/dir/
+
+----------------------------
+  create filelists for the ntuple files
+----------------------------
+$ $ANASCRIPTS/updatefilelist.sh
+the filelists are stored in the directory
+$MYPROJECTDIR/data/filelists/<sample set name>
+one filelist is created for each sample in the sample set
+$MYPROJECTDIR/data/filelists/<sample set name>/<sample name>.txt
+
+if you have several sample sets defined and only want to update one of them, do
+$ $ANASCRIPTS/updatefilelist.sh <sample set name>
+
+----------------------------
+  prepare to run your analyzer with grid-control
+----------------------------
+e.g
+cd $MYPROJECTDIR/workdir
+mkdir runanalyzer
+cd runanalyzer
+$ $ANASCRIPTS/runanalyzer_batch.py  susyanalysis1,susyanalysis2 ntuple/fastsim,ntuple/fullsim_stau250 --wtime 00:15:00 --merge 20
+first argument:
+   analyzers to run, comma-separated
+   these must be executables in $MYPROJECTDIR/analyzer
+second argument:
+   samples to run over, comma-separated
+   these are specified as follows: <sample set name>/<sample name>
+some useful options
+   --usage: print detailed usage
+   --wtime hh:mm:ss : cpu time to request per job
+   --merge N: number of files to process per job
+
+files created:
+  job.cfg : config file for grid-control
+  run_script.sh,script.py: scripts to be run on the batch nodes
+  parameters.txt: parameters for run_script.sh
+  results: output directory
+  runanalyzer_batch_command.txt: stores your command (just have a look)
+
+----------------------------
+  run grid-control
+----------------------------
+$ <YOUR>/<GRID-CONTROL>/go.py job.cfg -icG
+
+this setup is know to work with r950 of grid-control,
+and is know not to work with the latest releases
+(will be fixes with some edits to runanalyzer_batch.py)
