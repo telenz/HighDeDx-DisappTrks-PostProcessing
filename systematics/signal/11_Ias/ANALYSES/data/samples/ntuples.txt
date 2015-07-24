@@ -1,4 +1,0 @@
-data /afs/desy.de/user/t/tlenz/xxl-af-cms/NTUPLES/HighDeDx-DisappTrks-Ntuples/workdir/data_Run2012A_LowMomentumTracks/results/data_Run2012A/data_Run2012A
-mc /afs/desy.de/user/t/tlenz/xxl-af-cms/NTUPLES/HighDeDx-DisappTrks-Ntuples/workdir/mc_LowMomentumTracks/results/
-mc_ALCARECO /afs/desy.de/user/t/tlenz/xxl-af-cms/NTUPLES/HighDeDx-DisappTrks-Ntuples/workdir/mc_ALCARECO/results/
-data_ALCARECO /afs/desy.de/user/t/tlenz/xxl-af-cms/NTUPLES/HighDeDx-DisappTrks-Ntuples/workdir/data_ALCARECO/results/

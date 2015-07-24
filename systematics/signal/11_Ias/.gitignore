@@ -1,7 +1,7 @@
 *.root
 **/*.so
 **/*.d
-ANALYSIS
+ANALYSES
 *.so
 *.d
 **/*.o
