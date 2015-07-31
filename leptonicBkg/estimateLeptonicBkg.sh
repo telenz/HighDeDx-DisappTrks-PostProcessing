@@ -29,7 +29,7 @@ cat logFiles/muon.log
 
 
 ## 3.) Add all bks together
-root -l -b -q   a4_addBkgsTogether.C+"(${metCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")" > results.log
+root -l -b -q   a4_addBkgsTogether.C+"(${metCut},${ptCut},${ecaloCut},${iasCut},\"${region}\")" > logFiles/results.log
 cat logFiles/results.log
 
 
