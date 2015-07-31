@@ -43,14 +43,28 @@ int calculateSignificance(double metCut, double ecaloCut, TString region, TStrin
   samples.push_back(sig_m100_ct1);
   TString sig_m100_ct5 = "Madgraph_signal_mass_100_ctau_5cm";
   samples.push_back(sig_m100_ct5);
+  TString sig_m100_ct50 = "Madgraph_signal_mass_100_ctau_50cm";
+  samples.push_back(sig_m100_ct50);
+  TString sig_m200_ct1 = "Madgraph_signal_mass_200_ctau_1cm";
+  samples.push_back(sig_m200_ct1);
   TString sig_m200_ct5 = "Madgraph_signal_mass_200_ctau_5cm";
   samples.push_back(sig_m200_ct5);
+  TString sig_m200_ct50 = "Madgraph_signal_mass_200_ctau_50cm";
+  samples.push_back(sig_m200_ct50);
+  TString sig_m300_ct1 = "Madgraph_signal_mass_300_ctau_1cm";
+  samples.push_back(sig_m300_ct1);
   TString sig_m300_ct5 = "Madgraph_signal_mass_300_ctau_5cm";
   samples.push_back(sig_m300_ct5);
   TString sig_m300_ct10 = "Madgraph_signal_mass_300_ctau_10cm";
   samples.push_back(sig_m300_ct10);
+  TString sig_m300_ct50 = "Madgraph_signal_mass_300_ctau_50cm";
+  samples.push_back(sig_m300_ct50);
   TString sig_m400_ct10 = "Madgraph_signal_mass_400_ctau_10cm";
   samples.push_back(sig_m400_ct10);
+  TString sig_m500_ct1 = "Madgraph_signal_mass_500_ctau_1cm";
+  samples.push_back(sig_m500_ct1);
+  TString sig_m500_ct5 = "Madgraph_signal_mass_500_ctau_5cm";
+  samples.push_back(sig_m500_ct5);
   TString sig_m500_ct50 = "Madgraph_signal_mass_500_ctau_50cm";
   samples.push_back(sig_m500_ct50);
   
@@ -61,13 +75,13 @@ int calculateSignificance(double metCut, double ecaloCut, TString region, TStrin
     TH2D* sig1 = new TH2D("significance",samples[i] + ": s/#Delta b_{stat}",9,20,65,9,0.00,0.45);
     sig1->GetXaxis()->SetTitle("pt cut [GeV]");
     sig1->GetYaxis()->SetTitle("Ias cut");
-    sig1->GetZaxis()->SetTitle("x-sec [pb]");
+    sig1->GetZaxis()->SetTitle("minimal possible x-sec to dicover [pb]");
 
     //    TH2D* sig2 = new TH2D("significance",samples[i]+ ": s/#sqrt((#Delta b_{stat})^{2} + (#Delta b_{sys}^{fake})^{2} + (10 #upoint #Delta b_{sys}^{lepton})^{2})",7,30,65,9,0.00,0.45);
     TH2D* sig2 = new TH2D("significance",samples[i]+ ": s/#Delta b_{stat + sys}",9,20,65,9,0.00,0.45);
     sig2->GetXaxis()->SetTitle("pt cut [GeV]");
     sig2->GetYaxis()->SetTitle("Ias cut");
-    sig2->GetZaxis()->SetTitle("minimal possible excluded x-sec [pb]");
+    sig2->GetZaxis()->SetTitle("minimal possible x-sec to dicover [pb]");
 
     //----------------------------------------------------------------------------------------------------------
     // Get theory cross-section:
@@ -163,12 +177,37 @@ int calculateSignificance(double metCut, double ecaloCut, TString region, TStrin
 	double minExcludedXsec                   = 0;
 	for(int k=0; k<1000; k++){
 
-	  sOverDeltabUpStatPlusSys          = k/sqrt( pow( getOneSidedUpperLimit(nAll,0.6827)-nAll ,2) + pow(fakeStatError ,2) + pow(leptonStatError ,2) + pow(fakeSysError ,2) + pow(leptonSysError ,2));
-	  //cout<<"Number of signal events theory = "<<hSignal->GetBinContent(1)<<endl;
-	  //cout<<"Number of signal events        = "<<k<<endl;
-	  //cout<<"sOverDeltabUpStatPlusSys = "<<sOverDeltabUpStatPlusSys<<endl;
+	  sOverDeltabUpStatPlusSys            = k/sqrt( pow( getOneSidedUpperLimit(nAll,0.6827)-nAll ,2) + pow(fakeStatError ,2) + pow(leptonStatError ,2) + pow(fakeSysError ,2) + pow(leptonSysError ,2));
+	   
 
 	  if(sOverDeltabUpStatPlusSys>5){
+	    cout<<"Dicovery possible !!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
+
+	    minExcludedXsec =1.*k/hSignal->GetBinContent(1)*xsec;
+	    cout<<"minimal xsec = "<<minExcludedXsec<<endl;
+	    cout<<"theory xsec  = "<<xsec<<endl; 
+	    break;
+
+	  }
+
+	  
+	  
+	}
+
+	sig2->SetBinContent(l+1,j+1,minExcludedXsec);
+	//	sig2->SetBinError(l+1,j+1,sOverDeltabUpStatPlusSysError);
+
+	cout<<"s/(Delta b_stat)                          = "<<sOverDeltabUp<<" +/- "<<sOverDeltabError<<endl;
+	cout<<"s/sqrt(Delta b_stat**2 + (Delta b_sys**2) = "<<sOverDeltabUpStatPlusSys<<" +/- "<<sOverDeltabUpStatPlusSysError<<endl;
+    
+	//fBkg->Close();
+	//fSignal->Close();
+
+	for(int k=0; k<1000; k++){
+
+	  sOverDeltabUp                       = k/sqrt( pow( getOneSidedUpperLimit(nAll,0.6827)-nAll ,2));
+	  
+	  if(sOverDeltabUp>5){
 	    cout<<"Dicovery possible !!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
 
 	    minExcludedXsec =1.*k/hSignal->GetBinContent(1)*xsec;
@@ -181,8 +220,7 @@ int calculateSignificance(double metCut, double ecaloCut, TString region, TStrin
 	}
 
 
-	sig2->SetBinContent(l+1,j+1,minExcludedXsec);
-	//	sig2->SetBinError(l+1,j+1,sOverDeltabUpStatPlusSysError);
+	sig1->SetBinContent(l+1,j+1,minExcludedXsec);
 
 	cout<<"s/(Delta b_stat)                          = "<<sOverDeltabUp<<" +/- "<<sOverDeltabError<<endl;
 	cout<<"s/sqrt(Delta b_stat**2 + (Delta b_sys**2) = "<<sOverDeltabUpStatPlusSys<<" +/- "<<sOverDeltabUpStatPlusSysError<<endl;
