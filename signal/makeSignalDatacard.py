@@ -8,7 +8,7 @@ ptCut     = sys.argv[2]
 ecaloCut  = sys.argv[3]
 iasCut    = float(sys.argv[4])*100
 
-fIn = open('../leptons/datacards/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f.txt' %(metCut,ptCut,ecaloCut,iasCut), 'r')
+fIn = open('../leptonicBkg/datacards/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f.txt' %(metCut,ptCut,ecaloCut,iasCut), 'r')
 linesOriginal = fIn.read().split("\n")
 
 
@@ -35,6 +35,9 @@ for n in range(len(lines)):
         # Write two datacard
         fout = open('datacards/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(metCut,ptCut,ecaloCut,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt', 'w')
         for line in linesOriginal:
+
+            if line.find('CharginoPair_mass_100GeV_ctau_5cm') >= 0:
+                line = line.replace('CharginoPair_mass_100GeV_ctau_5cm', str('CharginoPair_mass_%.0fGeV_ctau_%.0fcm') %(float(mass),float(ctau)) )
 
             if line.find('rate') >= 0:
                 line = line.replace('x.xxxx', str("%.4f" % float(pred)));
