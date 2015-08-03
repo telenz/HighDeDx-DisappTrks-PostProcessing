@@ -155,7 +155,8 @@ void makeFit(double ptmin = 0.95, double ptmax = 1.00){
   cout<<"chi2/ndof data = "<<fData->GetChisquare()/fData->GetNDF()<<endl;
   cout<<"chi2/ndof MC   = "<<fMC->GetChisquare()/fMC->GetNDF()<<endl;
   cout.precision(5);
-  //cout<<endl<<"Final Uncertainty = "<<fixed<<uncertainty<<endl;
+  double uncertainty = relDiffMean;
+  cout<<endl<<"Final Uncertainty = "<<fixed<<uncertainty<<endl;
   cout<<"###########################################################################"<<endl;
   
 
