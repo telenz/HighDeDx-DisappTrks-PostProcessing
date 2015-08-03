@@ -1,6 +1,6 @@
 #!bin/bash
 
-source "/afs/desy.de/user/t/tlenz/myAnalysis/bkgEstimation/variablesSetting.sh"
+#source "../../variablesSetting.sh"
 
 echo -e "\n####################################################################################################################################################"
 echo -e "##################################### Estimation of bkg systematic uncertainties ###################################################################"
