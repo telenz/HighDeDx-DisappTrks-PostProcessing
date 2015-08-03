@@ -279,10 +279,14 @@ int getSysUncertainty(int pdgId, double ptCut, double ecaloCut, double iasCut){
 
 
 
-  double ratio        = highIasMCCR/highIasDataCR;
-  double ratioErrorUp   = ratio* sqrt(  pow( highIasMCCRErrorUp/highIasMCCR ,2 )   +  pow( highIasDataCRErrorLow/highIasDataCR ,2 ) );
-  double ratioErrorLow  = ratio* sqrt(  pow( highIasMCCRErrorLow/highIasMCCR ,2 )  +  pow( highIasDataCRErrorUp/highIasDataCR ,2 ) );
-
+  double ratio          = 0;
+  double ratioErrorUp   = 0;
+  double ratioErrorLow  = 0;
+  
+  ratio          = highIasMCCR/highIasDataCR;
+  ratioErrorUp   = sqrt(  pow( highIasMCCRErrorUp/highIasDataCR ,2 )    +  pow( highIasMCCR/pow(highIasDataCR,2) * highIasDataCRErrorLow ,2 ) );
+  ratioErrorLow  = sqrt(  pow( highIasMCCRErrorLow/highIasDataCR ,2 )   +  pow( highIasMCCR/pow(highIasDataCR,2) * highIasDataCRErrorUp  ,2 ) );
+ 
   /*
   if(highIasDataCR==0){
 
