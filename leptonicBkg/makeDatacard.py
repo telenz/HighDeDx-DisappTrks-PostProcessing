@@ -31,7 +31,7 @@ f.write('----------------------------------------\n\n\n')
 
 
 # Get results from file results.log
-fIn = open('results.log', 'read')
+fIn = open('logFiles/results.log', 'read')
 lines = fIn.read().split("\n")
 
 for line in lines:
@@ -69,7 +69,7 @@ for n in range(len(list0)):
 
 
 # Get n events from lepton.log
-fIn = open('pion.log', 'read')
+fIn = open('logFiles/pion.log', 'read')
 lines = fIn.read().split("\n")
 for line in lines:
     if line.find('Signal region') >= 0:
@@ -83,7 +83,7 @@ for line in lines:
     if line.find('NEntries in Ias histo  =') >= 0:
         nPionIas  = line.split()[5]
         print "nPionIas = " + str(nPionIas)
-fIn = open('elec.log', 'read')
+fIn = open('logFiles/elec.log', 'read')
 lines = fIn.read().split("\n")
 for line in lines:
     if line.find('Signal region') >= 0:
@@ -98,7 +98,7 @@ for line in lines:
         #     nElecSR=0;
     if line.find('NEntries in Ias histo  =') >= 0:
         nElecIas             = line.split()[5]
-fIn = open('muon.log', 'read')
+fIn = open('logFiles/muon.log', 'read')
 lines = fIn.read().split("\n")
 for line in lines:
     if line.find('Signal region') >= 0:
