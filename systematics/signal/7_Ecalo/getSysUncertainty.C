@@ -211,7 +211,7 @@ public:
 };
 
 
-int getSysUncertaintyInner(double ptCut, double ecaloCut){
+int getSysUncertainty(double ptCut, double ecaloCut){
 
   TString particle = "";
 
