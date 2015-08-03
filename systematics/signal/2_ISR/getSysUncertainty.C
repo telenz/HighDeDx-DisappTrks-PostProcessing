@@ -212,7 +212,7 @@ public:
 };
 
 
-int getSysUncertainty(double ptCut, double ecaloCut, double iasCut){
+int getSysUncertainty(double ptCut, double ecaloCut, double iasCut, TString inputSample){
 
   TString particle = "";
 
@@ -222,9 +222,9 @@ int getSysUncertainty(double ptCut, double ecaloCut, double iasCut){
   sample central;
 
 
-  up.file         =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_up/results/analyzer/ntuples/input_weighted/Madgraph_signal_mass_200_ctau_10cm.root","READ");
-  down.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_down/results/analyzer/ntuples/input_weighted/Madgraph_signal_mass_200_ctau_10cm.root","READ");
-  central.file    =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_central/results/analyzer/ntuples/input_weighted/Madgraph_signal_mass_200_ctau_10cm.root","READ");
+  up.file         =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_up/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
+  down.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_down/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
+  central.file    =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_central/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
   
   TString select = "chiTrackspreselectionTrigger/Variables";
 
