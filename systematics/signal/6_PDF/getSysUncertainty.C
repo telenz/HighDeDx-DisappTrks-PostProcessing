@@ -26,12 +26,12 @@
 
 
 
-int getSysUncertainty(double ptCut, double ecaloCut, double iasCut){
+int getSysUncertainty(double ptCut, double ecaloCut, double iasCut, TString inputSample){
 
   TString particle = "";
 
   // %%%%%%%%%%  Uncertainty of PDF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  TString filename =  Form("/afs/desy.de/user/t/tlenz/xxl-af-cms/PDFANALYSIS/workdir/analysis_2015_07_17_ptGt%.0f_ecaloLe%.0f_iasGt0p%02.0f/results/analyzer/ntuples/input_weighted/Madgraph_signal_mass_200_ctau_10cm.root",ptCut,ecaloCut,iasCut*100);
+  TString filename =  Form("/afs/desy.de/user/t/tlenz/xxl-af-cms/PDFANALYSIS/workdir/analysis_2015_07_17_ptGt%.0f_ecaloLe%.0f_iasGt0p%02.0f/results/analyzer/ntuples/input_weighted/" + inputSample,ptCut,ecaloCut,iasCut*100);
   TFile *file      =  new TFile(filename,"READ");
   //TFile *file     =  new TFile("analyzer_histograms_full.root","READ");
   TH1D *hpdf      =  0;
