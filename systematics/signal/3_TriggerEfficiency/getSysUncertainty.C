@@ -206,7 +206,7 @@ public:
 };
 
 
-int getSysUncertainty(double ptCut=20, double ecaloCut=5, double iasCut=0.1){
+int getSysUncertainty(double ptCut=20, double ecaloCut=5, double iasCut=0.1, TString inputSample=""){
 
   TString particle = "";
 
@@ -214,8 +214,8 @@ int getSysUncertainty(double ptCut=20, double ecaloCut=5, double iasCut=0.1){
   sample nominal;
   sample reweighted;
 
-  nominal.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_16_TrigEffunc_central/results/analyzer/ntuples/input_weighted/Madgraph_signal_mass_200_ctau_10cm.root","READ");
-  reweighted.file   =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_16_TrigEffunc_weighted/results/analyzer/ntuples/input_weighted/Madgraph_signal_mass_200_ctau_10cm.root","READ");
+  nominal.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_16_TrigEffunc_central/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
+  reweighted.file   =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_16_TrigEffunc_weighted/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
   
   TString select = "chiTrackspreselectionTrigger/Variables";
 
