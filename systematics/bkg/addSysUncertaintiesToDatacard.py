@@ -22,7 +22,7 @@ for line in linesOriginal:
 
 
 # Add new stuff - pions
-fIn = open('1_LeptonScaleFactors/pion.log','r')
+fIn = open('1_LeptonScaleFactors/logFiles/pion.log','r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
@@ -39,7 +39,7 @@ fout.write(format_string.format("pion_syst_rate", "lnN", "", "-", "-", uncertain
 fout.write('\n')
 
 # Add new stuff - electrons
-fIn = open('1_LeptonScaleFactors/electron_ptCutEq%s_ecaloCutEq%s.log' %(ptCut,ecaloCut),'r')
+fIn = open('1_LeptonScaleFactors/logFiles/electron_ptCutEq%s_ecaloCutEq%s.log' %(ptCut,ecaloCut),'r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
@@ -53,7 +53,7 @@ fout.write(format_string.format("elec_syst_rate", "lnN", "", "-", "-", "-",uncer
 fout.write('\n')
 
 # Add new stuff - muons
-fIn = open('1_LeptonScaleFactors/muon_ecaloCutEq%s.log' %(ecaloCut) ,'r')
+fIn = open('1_LeptonScaleFactors/logFiles/muon_ecaloCutEq%s.log' %(ecaloCut) ,'r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
@@ -68,7 +68,7 @@ fout.write('\n')
 
 ####################################################################################################
 # Add new stuff - pions
-fIn = open('2_LeptonIas/pion_ptCutEq%s_iasCutEq0p%.0f.log' %(ptCut,iasCut),'r')
+fIn = open('2_LeptonIas/logFiles/pion_ptCutEq%s_iasCutEq0p%.0f.log' %(ptCut,iasCut),'r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
@@ -83,7 +83,7 @@ fout.write(format_string.format("pion_syst_ias", "lnN", "", "-", "-", uncertaint
 fout.write('\n')
 
 # Add new stuff - electrons
-fIn = open('2_LeptonIas/electron_ptCutEq%s_iasCutEq0p%.0f.log' %(ptCut,iasCut),'r')
+fIn = open('2_LeptonIas/logFiles/electron_ptCutEq%s_iasCutEq0p%.0f.log' %(ptCut,iasCut),'r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
@@ -97,7 +97,7 @@ fout.write(format_string.format("elec_syst_ias", "lnN", "", "-", "-", "-",uncert
 fout.write('\n')
 
 # Add new stuff - muons
-fIn = open('2_LeptonIas/muon_ptCutEq%s_iasCutEq0p%.0f.log' %(ptCut,iasCut) ,'r')
+fIn = open('2_LeptonIas/logFiles/muon_ptCutEq%s_iasCutEq0p%.0f.log' %(ptCut,iasCut) ,'r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
@@ -112,7 +112,7 @@ fout.write('\n')
 
 ####################################################################################################
 # Add new stuff - fake rate
-fIn = open('3_FakeRate/fake_ptCutEq%s_ecaloCutEq%s.log' %(ptCut,ecaloCut) ,'r')
+fIn = open('3_FakeRate/logFiles/fake_ptCutEq%s_ecaloCutEq%s.log' %(ptCut,ecaloCut) ,'r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
@@ -126,7 +126,7 @@ fout.write(format_string.format("fake_syst_rate", "lnN", "", "-", uncertainty,"-
 fout.write('\n')
 ####################################################################################################
 # Add new stuff - fake ias
-fIn = open('4_FakeIas/fake_ptCutEq%s_ecaloCutEq%s_iasCutEq0p%.0f.log' %(ptCut,ecaloCut,iasCut) ,'r')
+fIn = open('4_FakeIas/logFiles/fake_ptCutEq%s_ecaloCutEq%s_iasCutEq0p%.0f.log' %(ptCut,ecaloCut,iasCut) ,'r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
