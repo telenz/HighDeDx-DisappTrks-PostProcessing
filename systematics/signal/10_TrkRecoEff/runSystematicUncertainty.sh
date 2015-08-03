@@ -6,10 +6,10 @@
 # edit analyzer.cc file and run analysis
 
 
-if [ ! -f "logFiles/result_ptCutEq${ptCut}.log" ] 
+if [ ! -f "logFiles/uncertainty_ptCutEq${ptCut}.log" ] 
 then
     echo ""
-    echo "%%%%%%%%% result_ptCutEq${ptCut}.log does not exists: Estimate trk reco eff uncertainty: "
+    echo "%%%%%%%%% logFiles/uncertainty_ptCutEq${ptCut}.log does not exists: Estimate trk reco eff uncertainty: "
     echo ""
 
     cd removeHits
@@ -24,10 +24,9 @@ then
     sed -e "s/MuonTracksAllHits_pt\[i\] < ${ptCut}/MuonTracksAllHits_pt[i] < __ptCut__/" analyzer.cc > analyzerAux.cc
     mv analyzerAux.cc analyzer.cc
     cd ..
-    python getSysUncertainty.py > result_ptCutEq${ptCut}.log
-    cat result_ptCutEq${ptCut}.log
+    python getSysUncertainty.py > logFiles/uncertainty_ptCutEq${ptCut}.log
 fi
-
+cat logFiles/uncertainty_ptCutEq${ptCut}.log
 ###########################################################################################################################
 
 
