@@ -9,6 +9,34 @@ echo -e "#######################################################################
 mass=("200")
 ctau=("10")                           #please specifiy in cm
 
+##########################################################################################################################################################
+echo -e "\n#################################################### Ecalo uncertainty ####################################################\n"
+cd 7_Ecalo
+root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut})"  > logFiles/uncertainty.log
+cat logFiles/uncertainty.log
+cd ..
+echo -e "\n#################################################### n_miss_middle ####################################################\n"
+cd 8_NInnerMiddleLost
+root -l -b -q getSysUncertaintyMiddle.C+"(${ptCut})"  > logFiles/uncertainty_Middle.log
+cat logFiles/uncertainty_Middle.log
+cd ..
+echo -e "\n#################################################### n_miss_inner ####################################################\n"
+cd 8_NInnerMiddleLost
+root -l -b -q getSysUncertaintyInner.C+"(${ptCut})"  > logFiles/uncertainty_Inner.log
+cat logFiles/uncertainty_Inner.log
+cd ..
+echo -e "\n#################################################### trk reco eff ####################################################\n"
+cd 10_TrkRecoEff
+source runSystematicUncertainty.sh
+cat logFiles/uncertainty_ptCutEq${ptCut}.log
+cd ..
+echo -e "\n#################################################### Ias ####################################################\n"
+cd 11_Ias
+root -l -b -q makeFit.C+"()"  > logFiles/uncertainty.log
+cat logFiles/uncertainty.log
+cd ..
+
+##########################################################################################################################################################
 for ct in "${ctau[@]}"
   do
     for m in "${mass[@]}"
@@ -47,36 +75,9 @@ for ct in "${ctau[@]}"
 	cat logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cd ..
 
+	python addSysUncertaintiesToDatacard.py ${metCut} ${ptCut} ${ecaloCut} "${iasCut}" "${m}" "${ct}"
+
     done
 done
-##########################################################################################################################################################
-echo -e "\n#################################################### Ecalo uncertainty ####################################################\n"
-cd 7_Ecalo
-root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut})"  > logFiles/uncertainty.log
-cat logFiles/uncertainty.log
-cd ..
-echo -e "\n#################################################### n_miss_middle ####################################################\n"
-cd 8_NInnerMiddleLost
-root -l -b -q getSysUncertaintyMiddle.C+"(${ptCut})"  > logFiles/uncertainty_Middle.log
-cat logFiles/uncertainty_Middle.log
-cd ..
-echo -e "\n#################################################### n_miss_inner ####################################################\n"
-cd 8_NInnerMiddleLost
-root -l -b -q getSysUncertaintyInner.C+"(${ptCut})"  > logFiles/uncertainty_Inner.log
-cat logFiles/uncertainty_Inner.log
-cd ..
-echo -e "\n#################################################### trk reco eff ####################################################\n"
-cd 10_TrkRecoEff
-source runSystematicUncertainty.sh
-cat logFiles/uncertainty_ptCutEq${ptCut}.log
-cd ..
-
-echo -e "\n#################################################### Ias ####################################################\n"
-cd 11_Ias
-root -l -b -q makeFit.C+"()"  > logFiles/uncertainty.log
-cat logFiles/uncertainty.log
-cd ..
-
-
 
 
