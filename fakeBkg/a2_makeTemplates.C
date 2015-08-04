@@ -35,7 +35,7 @@ int makeIasTemplates(double metCut, double jetptCut, double ptCut, double ecaloC
 
   sample data;
 
-  data.file = new TFile(fileFakeCS,"READ");
+  data.file = new TFile(fileFakeCS + "data.root","READ");
   
   data.file   -> GetObject("chiTrackspreselection/Variables",data.tree);
   data.getTreeVariables();
