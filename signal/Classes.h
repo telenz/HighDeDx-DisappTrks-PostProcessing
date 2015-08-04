@@ -1,5 +1,6 @@
 #include "../poisson/getPoissonCL.h"
 #include "TGraphAsymmErrors.h"
+#include "../inputAnalysisFiles.h"
 
 class sample{
 
@@ -191,8 +192,7 @@ public:
 	if(abs(trackEta->at(i))>2.1)                                 continue;
 	if(abs(trackEta->at(i))>1.42 && abs(trackEta->at(i))<1.65 )  continue;
 	if(trackPt->at(i)<ptCut)                                     continue;
-	//if(trackNValid->at(i)<5)         continue;
-     
+	
 	// Select region of interest
 	if(region=="CR1"){
 
@@ -221,14 +221,14 @@ public:
 
 	}
 	else if(region=="SR"){
-
+	 
 	  if(doEcaloCut){
 	    if(trackCaloIso->at(i) > ecaloCut)   continue;
 	  }
 	  if(!scaling){
 	    if(trackASmi->at(i)    < iasCut)     continue;
 	  }
-
+	 
 	}
 	//if(trackNValid->at(i)<7) continue;
 
@@ -260,7 +260,7 @@ public:
 //TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_19_testSignal/results/analyzer/ntuples/input_weighted/";
 //TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt20/results/analyzer/ntuples/input_weighted/";
 
-
+/*
 TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_15_METGt0_JetPtGt70_trackPtGt20/results/analyzer/ntuples/input_weighted/";
 //TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt30/results/analyzer/ntuples/input_weighted/";
 //TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_08_newSignalSamples/results/analyzer/ntuples/input_weighted/";
@@ -269,7 +269,7 @@ TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_15_MET
 TString filePionCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_08_METGt0_JetPtGt0_TauCS/results/analyzer/ntuples/input_weighted/";
 TString fileElectronCS  = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_08_METGt0_JetPtGt0_ElectronCS/results/analyzer/ntuples/input_weighted/";
 TString fileMuonCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_08_METGt0_JetPtGt0_MuonCS/results/analyzer/ntuples/input_weighted/";
-
+*/
 /*
 TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt20/results/analyzer/ntuples/input_weighted/";
 TString filePionCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt20_TauCS/results/analyzer/ntuples/input_weighted/";
