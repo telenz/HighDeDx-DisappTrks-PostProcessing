@@ -233,21 +233,18 @@ int getSysUncertainty(double ptCut=20, double ecaloCut=5, double iasCut=0.1, TSt
   
   
   double nNominal               =  nominal.histo->GetBinContent(1);
-  double nNominalError          =  nominal.histo->GetBinError(1);
   double nReweighted            =  reweighted.histo->GetBinContent(1);
-  double nReweightedError       =  reweighted.histo->GetBinError(1);
 
   double ratio             = nReweighted/nNominal;
-  double ratioError        = ratio * sqrt( pow(nReweightedError/nReweighted,2)  + pow(nNominalError/nNominal,2) ) ;
 
-  double uncertainty = (max(abs(ratio-ratioError-1),abs(ratio+ratioError-1)));
+  double uncertainty = abs(ratio-1.);
   cout<<"###########################################################################"<<endl;
   cout.precision(3);
   cout<<"Number of events:"<<endl;
-  cout<<"with simulated trigger efficiency    = "<<nNominal<<" +/- "<<nNominalError<<endl;
-  cout<<"with reweighted trigger efficiency   = "<<nReweighted<<" +/- "<<nReweightedError<<endl;
+  cout<<"with simulated trigger efficiency    = "<<nNominal<<endl;
+  cout<<"with reweighted trigger efficiency   = "<<nReweighted<<endl;
   cout<<"-------------------------------------------------"<<endl;
-  cout<<"Reweighted/Nominal    = "<<ratio<<" +/- "<<ratioError<<endl;
+  cout<<"Reweighted/Nominal    = "<<ratio<<endl;
   cout.precision(5);
   cout<<endl<<"Final Uncertainty = "<<fixed<<uncertainty<<endl;
   cout<<"###########################################################################"<<endl;
