@@ -17,13 +17,19 @@ cat logFiles/uncertainty.log
 cd ..
 echo -e "\n#################################################### n_miss_middle ####################################################\n"
 cd 8_NInnerMiddleLost
-root -l -b -q getSysUncertaintyMiddle.C+"(${ptCut})"  > logFiles/uncertainty_Middle.log
-cat logFiles/uncertainty_Middle.log
+if [ ! -f "logFiles/uncertainty_Middle_ptCutEq${ptCut}.log" ] 
+then
+    root -l -b -q getSysUncertaintyMiddle.C+"(${ptCut})"  > logFiles/uncertainty_Middle_ptCutEq${ptCut}.log
+fi
+cat logFiles/uncertainty_Middle_ptCutEq${ptCut}.log
 cd ..
 echo -e "\n#################################################### n_miss_inner ####################################################\n"
 cd 8_NInnerMiddleLost
-root -l -b -q getSysUncertaintyInner.C+"(${ptCut})"  > logFiles/uncertainty_Inner.log
-cat logFiles/uncertainty_Inner.log
+if [ ! -f "logFiles/uncertainty_Inner_ptCutEq${ptCut}.log" ] 
+then
+    root -l -b -q getSysUncertaintyInner.C+"(${ptCut})"  > logFiles/uncertainty_Inner_ptCutEq${ptCut}.log
+fi
+cat logFiles/uncertainty_Inner_ptCutEq${ptCut}.log
 cd ..
 echo -e "\n#################################################### trk reco eff ####################################################\n"
 cd 10_TrkRecoEff
