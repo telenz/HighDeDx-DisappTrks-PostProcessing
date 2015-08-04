@@ -179,10 +179,10 @@ public:
 
       tree->GetEntry(n);
 
-      //auxWeight = weight_xsec_lumi*weight;
+      
       auxWeight = 1;
       auxWeight = weight;
-
+      //auxWeight = weight_xsec_lumi*weight;
 
       if(met<100)           continue;
       if(leadingJetPt<110)  continue;
