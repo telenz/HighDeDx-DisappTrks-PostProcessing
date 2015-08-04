@@ -174,9 +174,9 @@ public:
     purity=0;
     double auxWeight = 0;
     
-    histoBefore= new TH1D("histoBefore","histoBefore",1,0,1);
+    histoBefore= new TH1D("histoBefore" + (TString) file->GetName(), "histoBefore",1,0,1);
     histoBefore->Sumw2();
-    histoAfter= new TH1D("histoAfter","histoAfter",1,0,1);
+    histoAfter= new TH1D("histoAfter"+ (TString) file->GetName(), "histoAfter",1,0,1);
     histoAfter->Sumw2();
 
     //cout<<"N events = "<<tree->GetEntries()<<endl;
