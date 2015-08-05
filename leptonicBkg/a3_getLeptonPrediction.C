@@ -74,8 +74,8 @@ int a3_getLeptonPrediction(int pdgId, double metCut, double jetptCut, double ptC
   //data.Selection(0, pdgId, metCut, jetptCut, ptCut, iasCut, doEcaloCut, ecaloCut, 0, region);
   //sr.Selection(  0, pdgId, metCut, jetptCut, ptCut, iasCut, 1,          ecaloCut, 0, region);
 
-  data.Selection(0, pdgId, metCut, jetptCut, ptCut, 0.0, doEcaloCut, ecaloCut, 0, region);
-  sr.Selection(  0, pdgId, metCut, jetptCut, ptCut, iasCut, 1,          ecaloCut, 0, region);
+  data.Selection(0, pdgId, metCut, jetptCut, ptCut, 0.0   , doEcaloCut, ecaloCut, 1, region);
+  sr.Selection(  0, pdgId, metCut, jetptCut, ptCut, iasCut, 1         , ecaloCut, 0, region);
 
 
   double nSRInclusive         =  data.histo->Integral(1,data.histo->GetNbinsX()+1);
@@ -165,7 +165,6 @@ int a3_getLeptonPrediction(int pdgId, double metCut, double jetptCut, double ptC
   cout.precision(2);
   cout<<"Statisitcs for "<<pdgId<<" : "<<"pt="<<ptCut<<" ECalo="<<ecaloCut<<endl;
   cout<<"NEntries in Ias histo  = "<<histoIas->Integral()*a<<endl;
-  cout<<"NEntries in high Ias = "<<Ias*a<<" +/- "<<IasErr<<endl;
   //cout<<"scaling factor         = "<<scientific<<scalingFactor<<" + "<<scalingFactorErrorUp<<" - "<<scalingFactorErrorLow<<endl;
   cout<<"###########################################################################"<<endl;
 
