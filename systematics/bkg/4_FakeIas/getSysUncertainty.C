@@ -22,7 +22,8 @@
 #include <cmath>
 #include <algorithm>
 #include <iomanip>
-#include "/afs/desy.de/user/t/tlenz/myAnalysis/bkgEstimation/plotStyle.h"
+#include "../../../plotStyle.h"
+#include "../../../inputAnalysisFiles.h"
 
 
 class sample{
@@ -227,10 +228,10 @@ int getSysUncertainty(double ptCut, double ecaloCut, double iasCut){
   sample fakeSR;
   sample fakeCR;
 
-  fakeSR.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_04_METGt0_JetPtGt70_trackPtGt20/results/analyzer/ntuples/input_weighted/wjets.root","READ");
+  fakeSR.file = new TFile(fileSR + "/wjets.root","READ");
   fakeSR.file -> GetObject("chiTrackspreselectionNoQCDCutsNoTrigger/Variables",fakeSR.tree);
   fakeSR.getTreeVariables();
-  fakeCR.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_15_METGt0_JetPtGt70_trackPtGt20_d0CutNotInverted_FakeCS/results/analyzer/ntuples/input_weighted/wjets.root","READ");
+  fakeCR.file = new TFile(fileFakeCS + "/wjets.root","READ");
   fakeCR.file -> GetObject("chiTrackspreselectionNoQCDCutsNoTrigger/Variables",fakeCR.tree);
   fakeCR.getTreeVariables();
 
