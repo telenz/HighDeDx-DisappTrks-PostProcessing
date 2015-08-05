@@ -271,7 +271,7 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   sample dytomumuKin;
   sample dytomumuDT;
 
-  dytomumuKin.file = new TFile(fileSingleMu + "/dytollAODSIM.root","READ");
+  dytomumuKin.file = new TFile(fileDYToLL + "/dytollAODSIM.root","READ");
   dytomumuKin.file -> GetObject("chiTracksnoSelectionTightMuons/Variables",dytomumuKin.tree);
   dytomumuKin.getTreeVariables();
   dytomumuKin.file -> GetObject("chiTrackspreselectionTightMuons/Variables",dytomumuDT.tree);
@@ -298,7 +298,7 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   sample dytoeeKin;
   sample dytoeeDT;
 
-  dytoeeKin.file = new TFile(fileSingleElectron + "/dytollAODSIM.root","READ");
+  dytoeeKin.file = new TFile(fileDYToLL + "/dytollAODSIM.root","READ");
   dytoeeKin.file -> GetObject("chiTracksnoSelectionTightElectrons/Variables",dytoeeKin.tree);
   dytoeeKin.getTreeVariables();
   dytoeeKin.file -> GetObject("chiTrackspreselectionTightElectrons/Variables",dytoeeDT.tree);
