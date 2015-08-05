@@ -148,7 +148,7 @@ public:
   };
 
   void getTreeVariables(){
-  
+
     tree->SetBranchAddress("trackEta",&trackEta);
     tree->SetBranchAddress("trackPt",&trackPt);
     tree->SetBranchAddress("trackPtError",&trackPtError);
@@ -194,7 +194,7 @@ public:
     tree->SetBranchAddress("LeadingJetPt",&leadingJetPt);
     tree->SetBranchAddress("weight",&weight);
     tree->SetBranchAddress("weight_xsec_lumi",&weight_xsec_lumi);
-    
+
 
     tree->SetBranchAddress("trackHCALRp5Isolation",&trackHCALRp5Isolation);
     tree->SetBranchAddress("trackECALRp5Isolation",&trackECALRp5Isolation);
@@ -211,14 +211,14 @@ public:
     if(histo)      histo      -> Sumw2();
     if(histoASmi)  histoASmi  -> Sumw2();
     if(histoECalo) histoECalo -> Sumw2();
- 
+
     for(int n=0; n<tree->GetEntries(); n++){
 
       tree->GetEntry(n);
 
       if(met<metCut)                     continue;
       if(leadingJetPt<jetPtCut)          continue;
-     
+
       if(fakeSelection){
 
 	//if(trackNLostOuter->at(0)<1)     continue; 
@@ -227,7 +227,7 @@ public:
 	if(doIasCut){
 	  if(trackASmi->at(0)<0.05)     continue;
 	}
-	
+
 	if(trackPt->at(0)<ptCut)         continue;
 
 
