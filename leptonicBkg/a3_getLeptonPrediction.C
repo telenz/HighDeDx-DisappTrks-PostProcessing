@@ -165,6 +165,7 @@ int a3_getLeptonPrediction(int pdgId, double metCut, double jetptCut, double ptC
   cout.precision(2);
   cout<<"Statisitcs for "<<pdgId<<" : "<<"pt="<<ptCut<<" ECalo="<<ecaloCut<<endl;
   cout<<"NEntries in Ias histo  = "<<histoIas->Integral()*a<<endl;
+  cout<<"NEntries in high Ias = "<<Ias*a<<" +/- "<<IasErr<<endl;
   //cout<<"scaling factor         = "<<scientific<<scalingFactor<<" + "<<scalingFactorErrorUp<<" - "<<scalingFactorErrorLow<<endl;
   cout<<"###########################################################################"<<endl;
 
