@@ -238,8 +238,6 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   sample wjetsDT;
 
   wjetsKin.file = new TFile(fileSR + "/wjets.root","READ");
-  //wjetsKin.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_16_METGt0_JetPtGt70_trackPtGt20/results/analyzer/ntuples/input_weighted/wjets.root","READ");
-  //wjetsKin.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_08_METGt0_JetPtGt0/results/analyzer/ntuples/input_weighted/wjets.root","READ");
   //wjetsKin.file -> GetObject("chiTracksQCDsupression/Variables",wjetsKin.tree);
   wjetsKin.file -> GetObject("chiTrackstriggerRequirements/Variables",wjetsKin.tree);
   //wjetsKin.file -> GetObject("chiTracksnoSelection/Variables",wjetsKin.tree);
@@ -274,8 +272,6 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   sample dytomumuDT;
 
   dytomumuKin.file = new TFile(fileSingleMu + "/dytollAODSIM.root","READ");
-  //dytomumuKin.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_16_newNtuples/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
-  //dytomumuKin.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_05_19_woStatus2Particle/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
   dytomumuKin.file -> GetObject("chiTracksnoSelectionTightMuons/Variables",dytomumuKin.tree);
   dytomumuKin.getTreeVariables();
   dytomumuKin.file -> GetObject("chiTrackspreselectionTightMuons/Variables",dytomumuDT.tree);
@@ -303,8 +299,6 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   sample dytoeeDT;
 
   dytoeeKin.file = new TFile(fileSingleElectron + "/dytollAODSIM.root","READ");
-  //dytoeeKin.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_16_newNtuples/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
-  //dytoeeKin.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_05_19_woStatus2Particle/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
   dytoeeKin.file -> GetObject("chiTracksnoSelectionTightElectrons/Variables",dytoeeKin.tree);
   dytoeeKin.getTreeVariables();
   dytoeeKin.file -> GetObject("chiTrackspreselectionTightElectrons/Variables",dytoeeDT.tree);
