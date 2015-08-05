@@ -29,8 +29,8 @@
 int getSignalResult(double metCut, double jetptCut,  double ptCut, double ecaloCut, double iasCut, TString region){
 
   vector<sample> samples;
-
-    
+  
+  
   sample sig_m100_ct1("Madgraph_signal_mass_100_ctau_1cm");
   samples.push_back(sig_m100_ct1);
   sample sig_m100_ct5("Madgraph_signal_mass_100_ctau_5cm");
