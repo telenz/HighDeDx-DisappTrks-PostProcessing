@@ -12,8 +12,11 @@ ctau=("10")                           #please specifiy in cm
 ##########################################################################################################################################################
 echo -e "\n#################################################### Ecalo uncertainty ####################################################\n"
 cd 7_Ecalo
-root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut})"  > logFiles/uncertainty.log
-cat logFiles/uncertainty.log
+if [ ! -f "logFiles/uncertainty_ptCutEq${ptCut}_ecaloCutEq${ecaloCut}.log" ] 
+then
+    root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut})"  > logFiles/uncertainty_ptCutEq${ptCut}_ecaloCutEq${ecaloCut}.log
+    cat logFiles/uncertainty_ptCutEq${ptCut}_ecaloCutEq${ecaloCut}.log
+fi
 cd ..
 echo -e "\n#################################################### n_miss_middle ####################################################\n"
 cd 8_NInnerMiddleLost
