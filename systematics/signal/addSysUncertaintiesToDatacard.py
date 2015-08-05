@@ -110,7 +110,7 @@ fout.write(format_string.format("ECalo", "lnN", "", uncertainty,"-", "-","-", "-
 fout.write('\n')
 
 # Add new stuff - 8_NInnerMiddleLost
-fIn = open('8_NInnerMiddleLost/logFiles/uncertainty_Middle.log','r')
+fIn = open('8_NInnerMiddleLost/logFiles/uncertainty_Middle_ptCutEq' +str(ptCut) + '.log','r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
@@ -123,7 +123,7 @@ fout.write(format_string.format("HitsLostMiddle", "lnN", "", uncertainty,"-", "-
 fout.write('\n')
 
 # Add new stuff - 8_NInnerMiddleLost
-fIn = open('8_NInnerMiddleLost/logFiles/uncertainty_Inner.log','r')
+fIn = open('8_NInnerMiddleLost/logFiles/uncertainty_Inner_ptCutEq' +str(ptCut) + '.log','r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
