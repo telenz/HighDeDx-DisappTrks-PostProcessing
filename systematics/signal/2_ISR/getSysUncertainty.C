@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "../../../plotStyle.h"
+#include "../../../inputAnalysisFiles.h"
 
 
 class sample{
@@ -222,9 +223,9 @@ int getSysUncertainty(double ptCut, double ecaloCut, double iasCut, TString inpu
   sample central;
 
 
-  up.file         =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_up/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
-  down.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_down/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
-  central.file    =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_ISRUnc_central/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
+  up.file         =  new TFile(inputISRcentral + "/" + inputSample,"READ");
+  down.file       =  new TFile(inputISRdown    + "/" + inputSample,"READ");
+  central.file    =  new TFile(inputISRup      + "/" + inputSample,"READ");
   
   TString select = "chiTrackspreselectionTrigger/Variables";
 
