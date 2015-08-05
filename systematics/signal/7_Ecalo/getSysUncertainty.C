@@ -215,17 +215,16 @@ int getSysUncertainty(double ptCut, double ecaloCut){
 
   TString particle = "";
 
-  // %%%%%%%%%%  Uncertainty of leptonic scale factors  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  // %%%%%%%%%%  Uncertainty of Ecalo selection acceptance  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  // The estimation is done by comparing the selection efficiency in the fake track control sample (nmiss+nmidd>=1) in data and MC (jetPtGt0 to increase statistics)
   sample data;
   sample wjets;
 
-  //wjets.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_07_EcaloUnc/results/analyzer/ntuples/input_weighted/wjets.root","READ");
-  //data.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_07_EcaloUnc/results/analyzer/ntuples/input_weighted/data.root","READ");
+  wjets.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_05_METGt0_JetPtGt0_FakeCS/results/analyzer/ntuples/input_weighted/wjets.root","READ");
+  data.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_05_METGt0_JetPtGt0_FakeCS/results/analyzer/ntuples/input_weighted/data.root","READ");
 
-  wjets.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_07_EcaloUnc_d0removed/results/analyzer/ntuples/input_weighted/wjets.root","READ");
-  data.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_07_EcaloUnc_d0removed/results/analyzer/ntuples/input_weighted/data.root","READ");
-  
   TString select = "chiTrackspreselection/Variables";
+  
 
   wjets.file    -> GetObject(select , wjets.tree);
   data.file     -> GetObject(select , data.tree);
