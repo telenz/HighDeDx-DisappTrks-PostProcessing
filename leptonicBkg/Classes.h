@@ -195,7 +195,7 @@ public:
 	if(abs(trackEta->at(i))>1.42 && abs(trackEta->at(i))<1.65 )  continue;
 	if(trackPt->at(i)<ptCut)                                     continue;
 	
-     
+	
 	// Select region of interest
 	if(region=="CR1"){
 
@@ -246,7 +246,7 @@ public:
 	  if(abs(trackPdgId->at(i))!=pdgId)      continue; 
 	}
 	// ****************************************** Particle Id **********************************
-      
+
 	if(histo)      histo         -> Fill(0.5);
 	if(histoASmi)  histoASmi     -> Fill(trackASmi->at(i),weight);
 	
