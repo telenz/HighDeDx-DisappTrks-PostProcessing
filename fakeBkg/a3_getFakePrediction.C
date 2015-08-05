@@ -157,6 +157,7 @@ int a3_getFakePrediction(double metCut, double jetptCut, double ecaloCut=5., dou
   inIas  ->  GetObject(histoName,histoHighECalo);
 
   // Low ECalo region
+  cout<<"Low Ecalo = "<<endl;
   double lowIas     = histoLowECalo->GetBinContent(1);
   double lowIasErr  = histoLowECalo->GetBinError(1);
   cout<<"lowIas = "<<lowIas<<" +/- "<<lowIasErr<<endl;
@@ -172,10 +173,14 @@ int a3_getFakePrediction(double metCut, double jetptCut, double ecaloCut=5., dou
   double nCR3Err = sqrt( pow( lowIas*nSRCR3Err ,2) + pow( nSRCR3*lowIasErr ,2) );
 
   // High ECalo region
+  cout<<"High Ecalo = "<<endl;
   lowIas     = histoHighECalo->GetBinContent(1);
   lowIasErr  = histoHighECalo->GetBinError(1);
   highIas    = histoHighECalo->GetBinContent(2);
   highIasErr = histoHighECalo->GetBinError(2);
+  cout<<"lowIas = "<<lowIas<<" +/- "<<lowIasErr<<endl;
+  cout<<"highIas = "<<highIas<<" +/- "<<highIasErr<<endl;
+  cout<<"relation = "<<lowIas/highIas<<endl;
 
   double nCR1     = nCR1CR2*highIas;
   double nCR1Err  = sqrt( pow( highIas*nCR1CR2Err ,2) + pow( nCR1CR2*highIasErr ,2) );
