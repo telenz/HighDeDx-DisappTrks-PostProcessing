@@ -2,9 +2,9 @@
 
 source variablesSetting.sh
 
-rm leptonicBkg/datacards/*
+#rm leptonicBkg/datacards/*
 rm signal/datacards/*
-rm systematics/bkg/datacards/*
+#rm systematics/bkg/datacards/*
 
 cd fakeBkg
 source estimateFakeBkg.sh
@@ -16,7 +16,11 @@ source estimateSignal.sh
 python makeSignalDatacard.py ${metCut} ${ptCut} ${ecaloCut} "${iasCut}"
 cd ../systematics/bkg
 source estimateBkgUncertainties.sh
+cd ../signal
+source estimateSignalUncertainties.sh
 
-cd ../
+cd ../..
 
 rm *~
+#rm */*.d
+#rm */*.so
