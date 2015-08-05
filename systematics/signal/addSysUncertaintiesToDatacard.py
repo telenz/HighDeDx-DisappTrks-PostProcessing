@@ -97,7 +97,7 @@ fout.write(format_string.format("PDF", "lnN", "", uncertainty,"-", "-","-", "-")
 fout.write('\n')
 
 # Add new stuff - 7_Ecalo
-fIn = open('7_Ecalo/logFiles/uncertainty.log','r')
+fIn = open('7_Ecalo/logFiles/uncertainty_ptCutEq' +str(ptCut) + '_ecaloCutEq' + str(ecaloCut) + '.log','r')
 lines = fIn.read().split("\n")
 
 for n in range(len(lines)):
