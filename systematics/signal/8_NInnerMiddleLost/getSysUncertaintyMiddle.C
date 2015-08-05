@@ -221,8 +221,8 @@ int getSysUncertaintyMiddle(double ptCut){
   sample data;
   sample wjets;
 
-  wjets.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_07_NmissUnc/results/analyzer/ntuples/input_weighted/wjets.root","READ");
-  data.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_07_NmissUnc/results/analyzer/ntuples/input_weighted/data.root","READ");
+  wjets.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_04_METGt0_JetPt0_NmissUnc/results/analyzer/ntuples/input_weighted/wjets.root","READ");
+  data.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_04_METGt0_JetPt0_NmissUnc/results/analyzer/ntuples/input_weighted/data.root","READ");
   
   TString select = "chiTrackspreselection/Variables";
 
