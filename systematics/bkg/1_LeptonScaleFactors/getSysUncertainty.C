@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "../../../plotStyle.h"
+#include "../../../inputAnalysisFiles.h"
 
 
 class sample{
@@ -241,34 +242,28 @@ int getSysUncertainty(int pdgId, double ptCut, double ecaloCut){
 
   if(pdgId==11){
 
-    dataSR.file  =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe/results/analyzer/ntuples/input_weighted/SingleElectron.root","READ");
-    dataCR.file  =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_ElectronCS/results/analyzer/ntuples/input_weighted/SingleElectron.root","READ");
-    mcCR.file    =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_ElectronCS/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
-    wjetsCR.file =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_ElectronCS/results/analyzer/ntuples/input_weighted/wjetsAODSIM.root","READ");
+    dataSR.file  =  new TFile(inputScaleUnc + "/SingleElectron.root","READ");
+    dataCR.file  =  new TFile(inputScaleUncElectron + "/SingleElectron.root","READ");
+    mcCR.file    =  new TFile(inputScaleUncElectron + "/dytollAODSIM.root","READ");
+    wjetsCR.file =  new TFile(inputScaleUncElectron + "/wjetsAODSIM.root","READ");
     particle     =  "Electron";
 
   }
   else if(pdgId==13){
 
-    dataSR.file  =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe/results/analyzer/ntuples/input_weighted/SingleMu.root","READ");
-    dataCR.file  =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_MuonCS/results/analyzer/ntuples/input_weighted/SingleMu.root","READ");
-    mcCR.file    =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_MuonCS/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
-    wjetsCR.file =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_MuonCS/results/analyzer/ntuples/input_weighted/wjetsAODSIM.root","READ");
+    dataSR.file  =  new TFile(inputScaleUnc + "SingleMu.root","READ");
+    dataCR.file  =  new TFile(inputScaleUncMuon + "/SingleMu.root","READ");
+    mcCR.file    =  new TFile(inputScaleUncMuon + "/dytollAODSIM.root","READ");
+    wjetsCR.file =  new TFile(inputScaleUncMuon + "/wjetsAODSIM.root","READ");
     particle     =  "Muon";
 
   }
   else if(pdgId==211){
 
-    dataSR.file  =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe/results/analyzer/ntuples/input_weighted/SingleMu.root","READ");
-    dataCR.file  =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_TauCS/results/analyzer/ntuples/input_weighted/SingleMu.root","READ");
-    mcCR.file    =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_TauCS/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
-    wjetsCR.file =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe_TauCS/results/analyzer/ntuples/input_weighted/wjetsAODSIM.root","READ");
-    /*
-    dataSR.file  =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_26_TagAndProbe_JetVetoRemoved/results/analyzer/ntuples/input_weighted/SingleMu.root","READ");
-    dataCR.file  =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_26_TagAndProbe_JetVetoRemoved_TauCS/results/analyzer/ntuples/input_weighted/SingleMu.root","READ");
-    mcCR.file    =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_26_TagAndProbe_JetVetoRemoved_TauCS/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
-    wjetsCR.file =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_26_TagAndProbe_JetVetoRemoved_TauCS/results/analyzer/ntuples/input_weighted/wjetsAODSIM.root","READ");
-    */
+    dataSR.file  =  new TFile(inputScaleUnc + "/SingleMu.root","READ");
+    dataCR.file  =  new TFile(inputScaleUncPion + "/SingleMu.root","READ");
+    mcCR.file    =  new TFile(inputScaleUncPion + "/dytollAODSIM.root","READ");
+    wjetsCR.file =  new TFile(inputScaleUncPion + "/wjetsAODSIM.root","READ");
     particle     =  "Tau";
     
   }
@@ -286,14 +281,14 @@ int getSysUncertainty(int pdgId, double ptCut, double ecaloCut){
   dataCR.file -> GetObject(select , dataCR.tree);
   dataCR.getTreeVariables();
 
-  mcSR.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe/results/analyzer/ntuples/input_weighted/dytollAODSIM.root","READ");
+  mcSR.file = new TFile(inputScaleUnc + "/dytollAODSIM.root","READ");
   mcSR.file -> GetObject(select , mcSR.tree);
   mcSR.getTreeVariables();
 
   mcCR.file -> GetObject(select , mcCR.tree);
   mcCR.getTreeVariables();
 
-  wjetsSR.file = new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/DYTOLLANALYSIS/workdir/analysis_2015_06_25_TagAndProbe/results/analyzer/ntuples/input_weighted/wjetsAODSIM.root","READ");
+  wjetsSR.file = new TFile(inputScaleUnc + "/wjetsAODSIM.root","READ");
   wjetsSR.file -> GetObject(select , wjetsSR.tree);
   wjetsSR.getTreeVariables();
 
