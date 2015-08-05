@@ -34,7 +34,7 @@ int a2_makeTemplates(int pdgId, double metCut, double jetptCut, double ptCut, do
   mc.histoASmi   = new TH1D(histoName, histoName, 2, xbinsASmi);
   mc.histoASmi->Sumw2();
 
-  mc.Selection(1, pdgId, 0, 0 , ptCut, 0.0 , 0 , ecaloCut, 0, region);
+  mc.Selection(1, pdgId, 0, 0 , ptCut, 0.0 , 0 , ecaloCut, 1, region);
 
   cout<<"Entries: "<<mc.histoASmi->GetEntries()<<endl;
   cout<<"2nd bin: "<<mc.histoASmi->GetBinContent(2)<<" +/- "<<mc.histoASmi->GetBinError(2)<<endl;
