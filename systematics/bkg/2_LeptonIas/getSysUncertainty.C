@@ -22,8 +22,9 @@
 #include <cmath>
 #include <algorithm>
 #include <iomanip>
-#include "/afs/desy.de/user/t/tlenz/myAnalysis/bkgEstimation/plotStyle.h"
-#include "/afs/desy.de/user/t/tlenz/myAnalysis/bkgEstimation/poisson/getPoissonCL.h"
+#include "../../../plotStyle.h"
+#include "../../../poisson/getPoissonCL.h"
+#include "../../../inputAnalysisFiles.h"
 
 
 class sample{
@@ -228,16 +229,16 @@ int getSysUncertainty(int pdgId, double ptCut, double ecaloCut, double iasCut){
   sample mcCR;
 
   if(pdgId==11){
-    mcCR.file     = new TFile("~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_04_METGt0_JetPtGt70_trackPtGt20_ElectronCS/results/analyzer/ntuples/input_weighted/wjets.root","READ");
-    dataCR.file   = new TFile("~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_04_METGt0_JetPtGt70_trackPtGt20_ElectronCS/results/analyzer/ntuples/input_weighted/data.root","READ");
+    mcCR.file     = new TFile(fileElectronCS + "/wjets.root","READ");
+    dataCR.file   = new TFile(fileElectronCS + "/data.root","READ");
   }
   else if(pdgId==13){
-    mcCR.file     = new TFile("~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_04_METGt0_JetPtGt70_trackPtGt20_MuonCS/results/analyzer/ntuples/input_weighted/wjets.root","READ");
-    dataCR.file   = new TFile("~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_04_METGt0_JetPtGt70_trackPtGt20_MuonCS/results/analyzer/ntuples/input_weighted/data.root","READ");
+    mcCR.file     = new TFile(fileMuonCS + "/wjets.root","READ");
+    dataCR.file   = new TFile(fileMuonCS + "/data.root","READ");
   }
   else if(pdgId==211){
-    mcCR.file     = new TFile("~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_04_METGt0_JetPtGt70_trackPtGt20_TauCS/results/analyzer/ntuples/input_weighted/wjets.root","READ");
-    dataCR.file   = new TFile("~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_04_METGt0_JetPtGt70_trackPtGt20_TauCS/results/analyzer/ntuples/input_weighted/data.root","READ");
+    mcCR.file     = new TFile(filePionCS + "/wjets.root","READ");
+    dataCR.file   = new TFile(filePionCS + "/data.root","READ");
   }
   else{
     cout<<" Unknown lepton !"<<endl;
