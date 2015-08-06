@@ -255,31 +255,3 @@ public:
   };
 
 };
-
-
-//TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_19_testSignal/results/analyzer/ntuples/input_weighted/";
-//TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt20/results/analyzer/ntuples/input_weighted/";
-
-/*
-TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_15_METGt0_JetPtGt70_trackPtGt20/results/analyzer/ntuples/input_weighted/";
-//TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt30/results/analyzer/ntuples/input_weighted/";
-//TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_08_newSignalSamples/results/analyzer/ntuples/input_weighted/";
-//TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_06_01_METGt0_JetPtGt0_newSignalSamples/results/analyzer/ntuples/input_weighted/";
-//TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_08_METGt0_JetPtGt0/results/analyzer/ntuples/input_weighted/";
-TString filePionCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_08_METGt0_JetPtGt0_TauCS/results/analyzer/ntuples/input_weighted/";
-TString fileElectronCS  = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_08_METGt0_JetPtGt0_ElectronCS/results/analyzer/ntuples/input_weighted/";
-TString fileMuonCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_08_METGt0_JetPtGt0_MuonCS/results/analyzer/ntuples/input_weighted/";
-*/
-/*
-TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt20/results/analyzer/ntuples/input_weighted/";
-TString filePionCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt20_TauCS/results/analyzer/ntuples/input_weighted/";
-TString fileElectronCS  = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt20_ElectronCS/results/analyzer/ntuples/input_weighted/";
-TString fileMuonCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_22_METGt0_JetPtGt0_TauPtGt30_SubJetPtGt20_MuonCS/results/analyzer/ntuples/input_weighted/";
-*/
-/*
-TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_01_METGt0_JetPtGt70_withData_andSignal/results/analyzer/ntuples/input_weighted/";
-TString filePionCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_01_METGt0_JetPtGt70_TauCS/results/analyzer/ntuples/input_weighted/";
-TString fileElectronCS  = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_01_METGt0_JetPtGt70_ElectronCS/results/analyzer/ntuples/input_weighted/";
-TString fileMuonCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_05_01_METGt0_JetPtGt70_MuonCS/results/analyzer/ntuples/input_weighted/";
-*/
-
