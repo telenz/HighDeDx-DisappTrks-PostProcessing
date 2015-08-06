@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "../../../plotStyle.h"
+#include "../../../inputAnalysisFiles.h"
 
 
 class sample{
@@ -172,7 +173,7 @@ public:
     purity=0;
     double auxWeight = 0;
     
-    histo= new TH1D("histo","histo",1,0,1);
+    histo= new TH1D("histo" + (TString) file->GetName(),"histo",1,0,1);
     histo->Sumw2();
     
     for(int n=0; n<tree->GetEntries(); n++){
@@ -215,7 +216,7 @@ int getSysUncertainty(double ptCut=20, double ecaloCut=5, double iasCut=0.1, TSt
   sample reweighted;
 
   nominal.file      =  new TFile(inputTrigEffNominal    + "/" + inputSample,"READ");
-  reweighted.file   =  new TFile(inputTrigEffReweighted + "/" + inputSample,"READ");
+  reweighted.file   =  new TFile(inputTrigEffWeighted + "/" + inputSample,"READ");
   
   TString select = "chiTrackspreselectionTrigger/Variables";
 
