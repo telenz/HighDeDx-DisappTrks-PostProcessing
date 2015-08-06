@@ -223,9 +223,9 @@ int getSysUncertainty(double ptCut, double ecaloCut, double iasCut, TString inpu
   sample central;
 
 
-  up.file         =  new TFile(inputISRcentral + "/" + inputSample,"READ");
+  up.file         =  new TFile(inputISRup      + "/" + inputSample,"READ");
   down.file       =  new TFile(inputISRdown    + "/" + inputSample,"READ");
-  central.file    =  new TFile(inputISRup      + "/" + inputSample,"READ");
+  central.file    =  new TFile(inputISRcentral + "/" + inputSample,"READ");
   
   TString select = "chiTrackspreselectionTrigger/Variables";
 
