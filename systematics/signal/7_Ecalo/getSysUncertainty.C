@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "../../../plotStyle.h"
+#include "../../../inputAnalysisFiles.h"
 
 
 class sample{
@@ -220,8 +221,8 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   sample data;
   sample wjets;
 
-  wjets.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_05_METGt0_JetPtGt0_FakeCS/results/analyzer/ntuples/input_weighted/wjets.root","READ");
-  data.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_05_METGt0_JetPtGt0_FakeCS/results/analyzer/ntuples/input_weighted/data.root","READ");
+  wjets.file      =  new TFile(inputEcaloUnc  + "/wjets.root","READ");
+  data.file       =  new TFile(inputEcaloUnc  + "/data.root","READ");
 
   TString select = "chiTrackspreselection/Variables";
   
