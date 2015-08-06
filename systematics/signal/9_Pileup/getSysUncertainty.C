@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "../../../plotStyle.h"
+#include "../../../inputAnalysisFiles.h"
 
 
 class sample{
@@ -178,7 +179,7 @@ public:
     
 
 
-    histo= new TH1D("histo","histo",1,0,1);
+    histo= new TH1D("histo" + (TString) file->GetName(),"histo",1,0,1);
     histo->Sumw2();
 
     //cout<<"N events = "<<tree->GetEntries()<<endl;
@@ -222,9 +223,9 @@ int getSysUncertainty(double ptCut, double ecaloCut, double iasCut, TString inpu
   sample central;
 
 
-  up.file         =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_PUunc_up/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
-  down.file       =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_PUunc_down/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
-  central.file    =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_06_PUunc_central/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
+  up.file         =  new TFile(inputPUup      + "/" + inputSample,"READ");
+  down.file       =  new TFile(inputPUdown    + "/" + inputSample,"READ");
+  central.file    =  new TFile(inputPUcentral + "/" + inputSample,"READ");
   
   TString select = "chiTrackspreselectionTrigger/Variables";
 
