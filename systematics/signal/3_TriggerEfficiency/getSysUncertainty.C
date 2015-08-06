@@ -214,8 +214,8 @@ int getSysUncertainty(double ptCut=20, double ecaloCut=5, double iasCut=0.1, TSt
   sample nominal;
   sample reweighted;
 
-  nominal.file      =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_16_TrigEffunc_central/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
-  reweighted.file   =  new TFile("/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_07_16_TrigEffunc_weighted/results/analyzer/ntuples/input_weighted/" + inputSample,"READ");
+  nominal.file      =  new TFile(inputTrigEffNominal    + "/" + inputSample,"READ");
+  reweighted.file   =  new TFile(inputTrigEffReweighted + "/" + inputSample,"READ");
   
   TString select = "chiTrackspreselectionTrigger/Variables";
 
