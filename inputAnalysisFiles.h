@@ -46,4 +46,6 @@ TString inputEcaloUnc       = "/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/wor
 
 TString inputNmissUnc       = "/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_04_METGt0_JetPt0_NmissUnc/results/analyzer/ntuples/input_weighted/";
 
+TString inputPDFUnc         = "/afs/desy.de/user/t/tlenz/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_10_PDFUnc/results/analyzer/ntuples/input_weighted/";
+
 #endif
