@@ -6,8 +6,8 @@ echo -e "\n#####################################################################
 echo -e "##################################### Estimation of signal systematic uncertainties ################################################################"
 echo -e "####################################################################################################################################################\n"
 
-mass=("200")
-ctau=("10")                           #please specifiy in cm
+mass=("100" "200" "300" "400" "500")
+ctau=("1" "5" "10" "50" "100")                           #please specifiy in cm
 
 ##########################################################################################################################################################
 echo -e "\n#################################################### Ecalo uncertainty ####################################################\n"
@@ -55,27 +55,27 @@ for ct in "${ctau[@]}"
 
 	echo -e "\n#################################################### Estimate ISR uncertainty ####################################################\n"
 	cd 2_ISR
-	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_${ct}cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
+	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_100cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cat logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cd ..
 	echo -e "\n#################################################### Estimate Trigger uncertainty ####################################################\n"
 	cd 3_TriggerEfficiency
-	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_${ct}cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
+	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_100cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cat logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cd ..
 	echo -e "\n#################################################### JES uncertainty ####################################################\n"
 	cd 4_JetEnergyScale
-	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_${ct}cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
+	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_100cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cat logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cd ..
 	echo -e "\n#################################################### JER uncertainty ####################################################\n"
 	cd 5_JetEnergyResolution
-	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_${ct}cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
+	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_100cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cat logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cd ..
 	echo -e "\n#################################################### PDF uncertainty ####################################################\n"
 	cd 6_PDF
-	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_${ct}cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
+	root -l -b -q getSysUncertainty.C+"(${ptCut},${ecaloCut},${iasCut},\"Madgraph_signal_mass_${m}_ctau_100cm.root\")"  > logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cat logFiles/Madgraph_signal_mass_${m}_ctau_${ct}cm.log
 	cd ..
 	echo -e "\n#################################################### PU uncertainty ####################################################\n"
