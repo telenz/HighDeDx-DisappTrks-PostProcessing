@@ -190,7 +190,6 @@ public:
       auxWeight = weight_xsec_lumi*weight;
       auxWeight = weight;
 
-
       if(met<100)           continue;
       if(leadingJetPt<110)  continue;
 	
@@ -222,14 +221,14 @@ int getSysUncertainty(double ptCut, double ecaloCut, double iasCut, TString inpu
   input.file         =  new TFile(inputPDFUnc + "/" + inputSample,"READ");
 
   TH1D *hpdf            = new TH1D("hpdf","hpdf",45,0,45);
-  cout<<"1"<<endl;
+
   for(int i=0; i<45; i++){
     TString select = Form("chiTrackspreselectionTriggerPDF_%i/Variables",i);
     input.file       -> GetObject(select , input.tree);
     input.tree->SetTitle( Form("chiTrackspreselectionTriggerPDF_%i",i));
     input.getTreeVariables();
-    input.Selection(     ptCut, ecaloCut, iasCut);
-    cout<<"input.histo->GetBinContent(1)      = "<<input.histo->GetBinContent(1)<<endl;
+    input.Selection(     ptCut, ecaloCut, 0.0);
+    //cout<<"input.histo->GetBinContent(1)      = "<<input.histo->GetBinContent(1)<<endl;
 
     hpdf->SetBinContent(i,input.histo->GetBinContent(1));
   }
