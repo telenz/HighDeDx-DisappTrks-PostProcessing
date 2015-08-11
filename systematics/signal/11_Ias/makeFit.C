@@ -57,19 +57,18 @@ void makeFit(double ptmin = 0.95, double ptmax = 1.00){
   histoData -> SetMarkerSize(0.7);
 
 
-  histoMC   -> GetXaxis()->SetRangeUser(0.3,1.0);
-  histoData -> GetXaxis()->SetRangeUser(0.3,1.0);
+  histoMC   -> GetXaxis()->SetRangeUser(0.2,1.0);
+  histoData -> GetXaxis()->SetRangeUser(0.2,1.0);
 
   histoMC ->Scale(histoData->Integral()/histoMC->Integral());
-
 
   double maximumMC = histoMC->GetXaxis()->GetBinCenter(histoMC->GetMaximumBin());
   cout<<"maximumMC = "<<maximumMC<<endl;
   double maximumData = histoData->GetXaxis()->GetBinCenter(histoData->GetMaximumBin());
   cout<<"maximumData = "<<maximumData<<endl;
 
-  TF1* fMC   = new TF1("fMC","gaus",maximumMC-0.2,maximumMC+0.2);
-  TF1* fData = new TF1("fData","gaus",maximumMC-0.2,maximumMC+0.2);
+  TF1* fMC   = new TF1("fMC","gaus",maximumMC-0.3,maximumMC+0.3);
+  TF1* fData = new TF1("fData","gaus",maximumMC-0.3,maximumMC+0.3);
 
   fMC->SetLineColor(kRed);
 
@@ -83,7 +82,7 @@ void makeFit(double ptmin = 0.95, double ptmax = 1.00){
   histoMC->GetXaxis()->SetTitle("I_{as}");
   histoData -> Draw("same e");
 
-  fMC ->Draw("same");
+  fMC   -> Draw("same");
   fData -> Draw("same");
 
   TLegend *leg = new TLegend(0.15,0.15,0.4,0.3);
@@ -134,7 +133,7 @@ void makeFit(double ptmin = 0.95, double ptmax = 1.00){
   double max = histoMC->GetMaximum();
   histoMC->SetMaximum(100*max);
 
-  //c->SaveAs("plots/hIas_" + ana + Form("_ptmin%ip%.0f_ptmax%ip%.0f.pdf",ptminInt,(ptmin-ptminInt)*100,ptmaxInt,(ptmax-ptmaxInt)*100));
+  c->SaveAs("plots/hIas_" + ana + Form("_ptmin%ip%.0f_ptmax%ip%.0f.pdf",ptminInt,(ptmin-ptminInt)*100,ptmaxInt,(ptmax-ptmaxInt)*100));
 
 
   cout<<endl;
