@@ -83,6 +83,21 @@ int calculateSignificance(double metCut, double ecaloCut, TString region, TStrin
     sig2->GetYaxis()->SetTitle("Ias cut");
     sig2->GetZaxis()->SetTitle("minimal possible x-sec to dicover [pb]");
 
+    TH2D* hBkgYield = new TH2D("hBkgYield","Bkg Yield",9,20,65,9,0.00,0.45);
+    hBkgYield -> GetXaxis()->SetTitle("pt cut [GeV]");
+    hBkgYield -> GetYaxis()->SetTitle("Ias cut");
+    hBkgYield -> GetZaxis()->SetTitle("bkg yield");
+
+    TH2D* hBkgUnc = new TH2D("hBkgUnc","Bkg Unc",9,20,65,9,0.00,0.45);
+    hBkgUnc -> GetXaxis()->SetTitle("pt cut [GeV]");
+    hBkgUnc -> GetYaxis()->SetTitle("Ias cut");
+    hBkgUnc -> GetZaxis()->SetTitle("bkg uncertainty [%]");
+
+    TH2D* hSignalYield = new TH2D("hSignalYield",samples[i] + ": Signal Yield",9,20,65,9,0.00,0.45);
+    hSignalYield -> GetXaxis()->SetTitle("pt cut [GeV]");
+    hSignalYield -> GetYaxis()->SetTitle("Ias cut");
+    hSignalYield -> GetZaxis()->SetTitle("signal yield");
+
     //----------------------------------------------------------------------------------------------------------
     // Get theory cross-section:
     cout<<"######################################################"<<endl;
@@ -153,6 +168,9 @@ int calculateSignificance(double metCut, double ecaloCut, TString region, TStrin
 	cout<<samples[i]<<" = "<<hSignal->GetBinContent(1)<<" +/- "<<hSignal->GetBinError(1)<<endl;
 	cout<<"Statistics of signal = "<<pow(hSignal->GetBinContent(1),2)/pow(hSignal->GetBinError(1),2)<<endl;
 
+	hBkgYield    -> SetBinContent(l+1,j+1,n);
+	hBkgUnc      -> SetBinContent(l+1,j+1,nErrorUp/n);
+	hSignalYield -> SetBinContent(l+1,j+1,hSignal->GetBinContent(1));
 
 	double sOverDeltabUp    = hSignal->GetBinContent(1)/(getOneSidedUpperLimit(nAll,0.6827)-nAll);
 	double sOverDeltabError = 0;
@@ -237,6 +255,18 @@ int calculateSignificance(double metCut, double ecaloCut, TString region, TStrin
     TCanvas *c1 = new TCanvas(samples[i],samples[i],500,500);
     sig2->Draw("COLZ");
     c1->SaveAs(Form("plots" + folder + "/" + samples[i] + "_ECaloLe%.0f" + "_SOverDeltaBStatPlusSys.pdf",ecaloCut));
+
+    TCanvas *c2 = new TCanvas(samples[i],samples[i],500,500);
+    hBkgYield->Draw("COLZ");
+    c2->SaveAs(Form("plots" + folder + "/BkgYield" + "_ECaloLe%.0f" + ".pdf",ecaloCut));
+
+    TCanvas *c3 = new TCanvas(samples[i],samples[i],500,500);
+    hBkgUnc->Draw("COLZ");
+    c3->SaveAs(Form("plots" + folder + "/BkgUncertainty" + "_ECaloLe%.0f" + ".pdf",ecaloCut));
+
+    TCanvas *c4 = new TCanvas(samples[i],samples[i],500,500);
+    hSignalYield->Draw("COLZ");
+    c4->SaveAs(Form("plots" + folder + "/" + samples[i] + "_ECaloLe%.0f" + "_SignalYield.pdf",ecaloCut));
 
     
 
