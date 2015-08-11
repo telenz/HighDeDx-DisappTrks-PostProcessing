@@ -44,8 +44,8 @@ $iasCut * 100
 EOF
 `
 iasCut2=${iasCut2%.*}
+iasCut2=$(printf %02d $iasCut2)
 
-if [ ${iasCut2} \< 10 ] ; then iasCut2=0$iasCut2 ; fi;
 echo $iasCut2
 
 if [ ! -f "logFiles/pion_ptCutEq${ptCut}_iasCutEq0p${iasCut2}.log" ] 
