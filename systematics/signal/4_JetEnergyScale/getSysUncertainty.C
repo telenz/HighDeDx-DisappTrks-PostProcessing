@@ -189,7 +189,6 @@ public:
 
       auxWeight = weight;
 
-
       if(met<100)           continue;
       if(leadingJetPt<110)  continue;
 	
@@ -235,9 +234,9 @@ int getSysUncertainty(double ptCut, double ecaloCut, double iasCut, TString inpu
   down.getTreeVariables();
   central.getTreeVariables();
 
-  up.Selection(     ptCut, ecaloCut, iasCut);
-  down.Selection(   ptCut, ecaloCut, iasCut);
-  central.Selection(ptCut, ecaloCut, iasCut);
+  up.Selection(     ptCut, ecaloCut, 0.0);
+  down.Selection(   ptCut, ecaloCut, 0.0);
+  central.Selection(ptCut, ecaloCut, 0.0);
   
 
   cout<<"up.histo->GetBinContent(1)      = "<<up.histo->GetBinContent(1)<<endl;
