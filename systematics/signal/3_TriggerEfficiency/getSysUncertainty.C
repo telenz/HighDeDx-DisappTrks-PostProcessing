@@ -225,8 +225,8 @@ int getSysUncertainty(double ptCut=20, double ecaloCut=5, double iasCut=0.1, TSt
   nominal.getTreeVariables();
   reweighted.getTreeVariables();
 
-  nominal.Selection(    ptCut, ecaloCut, iasCut );
-  reweighted.Selection( ptCut, ecaloCut, iasCut );
+  nominal.Selection(    ptCut, ecaloCut, 0.0 );
+  reweighted.Selection( ptCut, ecaloCut, 0.0 );
 
 
   cout<<"nominal.histo->GetBinContent(1)      = "<<nominal.histo->GetBinContent(1)<<endl;
