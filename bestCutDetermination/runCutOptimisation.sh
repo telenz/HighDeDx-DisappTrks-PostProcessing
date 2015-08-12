@@ -12,7 +12,21 @@ for ct in "${ctau[@]}"
 	#echo "m="$m
 	#echo "ctau="$ct
 
-	python readFromDatacards.py  "${m}" "${ct}" ${printTitle}
+	python determineBestCuts.py  "${m}" "${ct}" ${printTitle}
+	printTitle=0
+
+    done
+done
+
+printTitle=1
+for ct in "${ctau[@]}"
+  do
+    for m in "${mass[@]}"
+    do
+	#echo "m="$m
+	#echo "ctau="$ct
+
+	python determineBestCutsOutOf4Sets.py  "${m}" "${ct}" ${printTitle}
 	printTitle=0
 
     done
