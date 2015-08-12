@@ -1,0 +1,2 @@
+ALL_PACKAGES += $(patsubst src/%,%,src/HiggsAnalysis-CombinedLimit/data)
+subdirs_src_HiggsAnalysis-CombinedLimit_data := src_HiggsAnalysis-CombinedLimit_data_benchmarks src_HiggsAnalysis-CombinedLimit_data_hbb src_HiggsAnalysis-CombinedLimit_data_hww src_HiggsAnalysis-CombinedLimit_data_lhc-hcg src_HiggsAnalysis-CombinedLimit_data_lhc-hxswg src_HiggsAnalysis-CombinedLimit_data_tutorials
