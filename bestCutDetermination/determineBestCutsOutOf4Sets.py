@@ -18,7 +18,7 @@ printTitle = sys.argv[3]
 #mass=500
 #ctau=5
 
-fileOut = open("resultsWith4DifferentSetOfCuts.txt",'a')
+fileOut = open("resultsOutOf4Sets.txt",'a')
 
 ##############################################################################################
 def isfloat(value):
