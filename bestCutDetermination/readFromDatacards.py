@@ -105,14 +105,15 @@ bestValueIasCut=0
 bestValueXsec=10000
 
 # Loop over pt
-for l in range(0,8):
-    ptCut = 20+5*l
-    for i in range(0,8):
+for l in range(1,10):
+    ptCut = 20+10*l
+    for i in range(1,9):
         iasCut=00+i*5
         if not os.path.exists('datacards/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'): continue
         file    = 'datacards/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'
         #print file
         nSignal = getYield(file,"signal")
+        if nSignal == 0: continue
         nFake   = getYield(file,"fake")
         nPion   = getYield(file,"pion")
         nElec   = getYield(file,"elec")
@@ -139,7 +140,7 @@ for l in range(0,8):
         # Now loop over different xsec and find xsection with which 5sigma discovery is possible
         for k in range(0,10000):
             sOverB = k/math.sqrt(pow(bkgUnc,2) + pow(signalUnc/nSignal*k,2))
-            if(sOverB>5):
+            if(sOverB>3):
                 #print "Discovery possible!"
                 #print "k = " + str(k)
                 #print "xsec = " + str(xsec)
