@@ -21,15 +21,6 @@ if(float(iasCut)<10):
 f = open('datacards/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f.txt' %(metCut,ptCut,ecaloCut,iasCut) , 'w')
 
 
-f.write('imax 1 number of channels \n')
-f.write('jmax 4 number of backgrounds \n')
-f.write('kmax * number of nuisance parameters \n\n\n')
-f.write('----------------------------------------\n')
-f.write('bin                                    1\n')
-f.write('#observation                           x\n')
-f.write('----------------------------------------\n\n\n')
-
-
 # Get results from file results.log
 fIn = open('logFiles/results.log', 'read')
 lines = fIn.read().split("\n")
@@ -41,13 +32,23 @@ for line in lines:
         fakeBkgErr  = "{0:.4f}".format(float(line.split()[5]))
     if line.find('Pion') >= 0:
         pionBkg     =  "{0:.4f}".format(float(line.split()[3]))
-        pionBkgErr  =  "{0:.4f}".format(float(line.split()[5]))
     if line.find('Electron') >= 0:
         elecBkg     =  "{0:.4f}".format(float(line.split()[3]))
-        elecBkgErr  =  "{0:.4f}".format(float(line.split()[5]))
     if line.find('Muon') >= 0:
         muonBkg     =  "{0:.4f}".format(float(line.split()[3]))
-        muonBkgErr  =  "{0:.4f}".format(float(line.split()[5]))
+    if line.find('Data Yield') >= 0:
+        aux  =  line.split(" = ")[1]
+        aux = aux[0:-2]
+        dataYield = float(aux)
+        print dataYield
+
+f.write('imax 1 number of channels \n')
+f.write('jmax 4 number of backgrounds \n')
+f.write('kmax * number of nuisance parameters \n\n\n')
+f.write('----------------------------------------\n')
+f.write('bin                                    1\n')
+f.write('observation                            ' + str("{0:.0f}".format(dataYield)) + '\n')
+f.write('----------------------------------------\n\n\n')
 
 
 # signal
