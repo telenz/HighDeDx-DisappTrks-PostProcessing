@@ -10,3 +10,4 @@ test
 tmp
 python
 config
+.SCRAM
