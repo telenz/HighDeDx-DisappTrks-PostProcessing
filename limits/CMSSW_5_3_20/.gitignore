@@ -8,3 +8,5 @@ logs
 objs
 test
 tmp
+python
+config
