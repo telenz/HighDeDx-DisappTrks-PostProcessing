@@ -108,7 +108,7 @@ def getSignalUncertainties(filename):
 ##############################################################################################
 
 ptCut=50
-iasCut=30
+iasCut=05
 file    = 'datacards/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'
 nSignal = getYield(file,"signal")
 nFake   = getYield(file,"fake")
@@ -125,7 +125,10 @@ sysUnc=getSysUncertainties(file)
 print "sysUnc = " + str(sysUnc)
 signalUnc = getSignalUncertainties(file)
 
-print "Result (pt>" + str(ptCut) +"GeV, Ias>0." + str(iasCut) + ") = " +str(nBkg)+ " + " +"{0:.3f}".format(statUncUp) + " - "+ "{0:.3f}".format(statUncDown)+ " (stat)" + " +/- " + "{0:.3f}".format(sysUnc)+ " (sys)" 
+print "Result (pt>" + str(ptCut) +"GeV, Ias>0." + str('%02.0f' %(iasCut)) + ") = " +str(nBkg)+ " + " +"{0:.3f}".format(statUncUp) + " - "+ "{0:.3f}".format(statUncDown)+ " (stat)" + " +/- " + "{0:.3f}".format(sysUnc)+ " (sys)"
+
+# print it for latex format
+print "Prediction (p$_T>$" + str(ptCut) +"\,GeV, I$_{as}>$0." + str('%02.0f' %(iasCut)) + ") = " +str("{0:.2f}".format(nBkg))+ " $^{+ " +"{0:.2f}".format(statUncUp) + "} _{- "+ "{0:.2f}".format(statUncDown)+ "}$ (stat)" + " $\\pm$ " + "{0:.2f}".format(sysUnc)+ " (sys) \\\\" 
 
 
 #format_string = "{0:<30}{1:<30}{2:<30}{3:<30}{4:<30}{5:<30}"
