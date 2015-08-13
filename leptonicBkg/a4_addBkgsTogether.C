@@ -143,7 +143,7 @@ int a4_addBkgsTogether(double metCut, double ptCut, double ecaloCut, double iasC
   fake   -> Write();
   out->Close();
 
-  if(region=="SR") return 0;
+  //if(region=="SR") return 0;
 
   n = hData->Integral();
   cout.precision(0);
