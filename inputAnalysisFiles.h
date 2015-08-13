@@ -4,7 +4,7 @@
 
 
 
-TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_04_METGt0_JetPt70/results/analyzer/ntuples/input_weighted/";
+TString fileSR          = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_12_METGt0_JetPt70_noBlinding/results/analyzer/ntuples/input_weighted/";
 TString filePionCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_04_METGt0_JetPt70_TauCS/results/analyzer/ntuples/input_weighted/";
 TString fileElectronCS  = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_04_METGt0_JetPt70_ElectronCS/results/analyzer/ntuples/input_weighted/";
 TString fileMuonCS      = "~/xxl-af-cms/ANALYSIS/workdir/analysis_2015_08_04_METGt0_JetPt70_MuonCS/results/analyzer/ntuples/input_weighted/";
