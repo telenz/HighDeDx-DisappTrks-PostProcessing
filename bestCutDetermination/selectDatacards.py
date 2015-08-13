@@ -7,7 +7,12 @@ import ROOT
 import os.path
 import shutil
 
-filename = "datacardsSelected"
+input       = sys.argv[1]
+output      = sys.argv[2]
+
+print "input folder = " + input
+print "output folder = " + output 
+filename = output
 
 if not os.path.exists(filename):
     os.makedirs(filename)
@@ -18,7 +23,7 @@ else:
 
 
 
-lines = open("resultsWith4DifferentSetOfCuts.txt",'r').readlines()[1:]
+lines = open("resultsOutOf4Sets.txt",'r').readlines()[1:]
 
 for n in range(len(lines)):
     columns = lines[n].split()
@@ -35,11 +40,11 @@ for n in range(len(lines)):
     iasCut = iasCut[2:]
     
     
-    for fn in os.listdir('./datacards/.'):
+    for fn in os.listdir('./' + input + '/.'):
         #print fn
         if fn.find("mass_" + mass) >= 0:
             if fn.find(ctau + "cm") >= 0:
                 if fn.find("ptCutEq" + ptCut) >=0:
                     if fn.find("IasCutEq0p" + iasCut) >=0:
-                        shutil.copy2("datacards/" + fn, filename + "/" + fn)
+                        shutil.copy2(input +"/" + fn, filename + "/" + fn)
                         print fn
