@@ -3,7 +3,7 @@
 source variablesSetting.sh
 
 #rm leptonicBkg/datacards/*
-rm signal/datacards/*
+#rm signal/datacards/*
 #rm systematics/bkg/datacards/*
 
 cd fakeBkg
