@@ -206,7 +206,7 @@ public:
   };
 
 
-  void Selection(double metCut, double jetPtCut, bool fakeSelection, double ptCut, bool ecaloSelection, bool LowECaloRegion, double ecaloCut=100000., bool doIasCut=false){
+  void Selection(double metCut, double jetPtCut, bool fakeSelection, double ptCut, bool ecaloSelection, bool LowECaloRegion, double ecaloCut=100000.){
 
     if(histo)      histo      -> Sumw2();
     if(histoASmi)  histoASmi  -> Sumw2();
@@ -224,13 +224,9 @@ public:
 	//if(trackNLostOuter->at(0)<1)     continue; 
 	if(abs(trackEta->at(0))>2.1)     continue;
 	if(abs(trackEta->at(0))>1.42 && abs(trackEta->at(0))<1.65 )  continue;
-	if(doIasCut){
-	  if(trackASmi->at(0)<0.05)     continue;
-	}
-
+	
 	if(trackPt->at(0)<ptCut)         continue;
-
-
+	
 	if(ecaloSelection){      
 	  if(LowECaloRegion){
 	    if(trackCaloIso->at(0)>ecaloCut)  continue;
