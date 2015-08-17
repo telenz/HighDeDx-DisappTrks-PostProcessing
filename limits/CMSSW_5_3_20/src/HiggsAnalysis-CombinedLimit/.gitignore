@@ -1,2 +1,8 @@
 *.log
 *~
+*.d
+*.so
+data/benchmarks/shapes/*.root
+data/benchmarks/summer11/*/*.root
+data/lhc-hcg/cms-hgg-1fb/*.root
+*.root
