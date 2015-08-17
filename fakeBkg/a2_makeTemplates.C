@@ -55,7 +55,7 @@ int makeIasTemplates(double metCut, double jetptCut, double ptCut, double ecaloC
     TString histoName = (TString) Form("fake_bkg_data_Iascut_0p%02.0f_EcaloLow_%i",iasCut*100,j);
     cout<<"histoName = "<<histoName<<endl;
     data.histoASmi   = new TH1D(histoName, histoName, 2, xbinsASmi);
-    data.Selection(metCut, jetptCut , true, ptCut, true , LowECaloRegion , ecaloCut, false);
+    data.Selection(metCut, jetptCut , true, ptCut, true , LowECaloRegion , ecaloCut);
     //data.Selection(0, 0 , true, ptCut, true , LowECaloRegion , ecaloCut, false);
     cout<<"look here:"<<data.histoASmi->GetEntries()<<endl;
       // ***** Calculate scaling factor  ************************************************************************
