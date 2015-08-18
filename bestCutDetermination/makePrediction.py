@@ -109,7 +109,7 @@ def getSignalUncertainties(filename):
 
 ptCut=50
 iasCut=05
-file    = 'datacards/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'
+file    = 'datacardsUnblinded/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'
 nSignal = getYield(file,"signal")
 nFake   = getYield(file,"fake")
 nPion   = getYield(file,"pion")
