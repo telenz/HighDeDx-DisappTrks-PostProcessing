@@ -15,6 +15,15 @@ process                                                0                        
 rate                                                   17.1671                                  2.5250                        0.0000                        0.2630                        0.0000                        
 
 
+# STATISTICAL UNCERTAINTIES
+
+signal_stat                             gmN  742         0.0231                                  -                             -                             -                             -                             
+fake_stat                               lnN            -                                       1.4511                        -                             -                             -                             
+pion_stat                               gmN  0         -                                       -                             0.0192                        -                             -                             
+elec_stat                               gmN  1         -                                       -                             -                             0.2631                        -                             
+muon_stat                               gmN  0         -                                       -                             -                             -                             0.1353                        
+
+
 
 # SYSTEMATIC UNCERTAINTIES 
 
