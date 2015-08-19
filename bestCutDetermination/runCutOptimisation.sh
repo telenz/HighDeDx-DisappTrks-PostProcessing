@@ -5,6 +5,7 @@ rm results.txt
 mass=("100" "200" "300" "400" "500")
 ctau=("1" "5" "10" "50" "100") 
 printTitle=1
+inputfolder="datacardsUnblinded"
 for ct in "${ctau[@]}"
   do
     for m in "${mass[@]}"
@@ -12,7 +13,7 @@ for ct in "${ctau[@]}"
 	#echo "m="$m
 	#echo "ctau="$ct
 
-	python determineBestCuts.py  "${m}" "${ct}" ${printTitle}
+	python determineBestCuts.py  "${m}" "${ct}" ${printTitle} ${inputfolder}
 	printTitle=0
 
     done
@@ -26,7 +27,7 @@ for ct in "${ctau[@]}"
 	#echo "m="$m
 	#echo "ctau="$ct
 
-	python determineBestCutsOutOf4Sets.py  "${m}" "${ct}" ${printTitle}
+	python determineBestCutsOutOf4Sets.py  "${m}" "${ct}" ${printTitle} ${inputfolder}
 	printTitle=0
 
     done
