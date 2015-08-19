@@ -20,7 +20,10 @@ inputfolder = sys.argv[4]
 #mass=500
 #ctau=5
 
-fileOut = open("resultsOutOf4Sets.txt",'a')
+if printTitle=="1":
+  fileOut = open("resultsOutOf4Sets.txt",'w')
+else:
+  fileOut = open("resultsOutOf4Sets.txt",'a')
 
 ##############################################################################################
 def isfloat(value):
