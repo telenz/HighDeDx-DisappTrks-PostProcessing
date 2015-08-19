@@ -10,9 +10,11 @@ import os.path
 #ptCut     = sys.argv[2]
 #ecaloCut  = sys.argv[3]
 #iasCut    = float(sys.argv[4])*100
-mass       = sys.argv[1]
-ctau       = sys.argv[2]
-printTitle = sys.argv[3]
+mass        = sys.argv[1]
+ctau        = sys.argv[2]
+printTitle  = sys.argv[3]
+inputfolder = sys.argv[4]
+
 #ptCut=20
 #iasCut=15
 #mass=500
@@ -108,8 +110,8 @@ bestValueXsec=10000
 for ptCut in ['30','50']:
   for iasCut in ['5','30']:
     iasCut = float(iasCut)
-    file    = 'datacardsUnblinded/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'
-    if not os.path.exists('datacardsUnblinded/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'): continue
+    file    = inputfolder + '/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'
+    if not os.path.exists(inputfolder + '/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'): continue
     nSignal = getYield(file,"signal")
     if nSignal == 0: continue
     nFake   = getYield(file,"fake")
