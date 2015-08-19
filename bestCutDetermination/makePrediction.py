@@ -6,14 +6,9 @@ import math
 import ROOT
 import os.path
 
-#metCut    = sys.argv[1]
-#ptCut     = sys.argv[2]
-#ecaloCut  = sys.argv[3]
-#iasCut    = float(sys.argv[4])*100
-#ptCut=20
-#iasCut=15
-#mass=500
-#ctau=5
+ptCut       = sys.argv[1]
+iasCut      = float(sys.argv[2])*100
+inputfolder = sys.argv[3]
 mass=100
 ctau=1
 
@@ -107,8 +102,6 @@ def getSignalUncertainties(filename):
     return math.sqrt(uncertainty)
 ##############################################################################################
 
-ptCut=50
-iasCut=05
 file    = 'datacardsUnblinded/datacard_metCutEq%s_ptCutEq%s_ECaloCutEq%s_IasCutEq0p%02.0f_mass_' %(100,ptCut,5,iasCut) + str(mass) + 'GeV_ctau_' + str(ctau) + 'cm.txt'
 nSignal = getYield(file,"signal")
 nFake   = getYield(file,"fake")
