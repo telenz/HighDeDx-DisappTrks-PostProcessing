@@ -251,8 +251,8 @@ int getSysUncertainty(int pdgId, double ptCut, double ecaloCut, double iasCut){
   dataCR.file -> GetObject(treeName,dataCR.tree);
   dataCR.getTreeVariables();
 
-  mcCR.Selection(  pdgId, 0, 0, ptCut, ecaloCut, iasCut);
-  dataCR.Selection(pdgId, 0, 0, ptCut, ecaloCut, iasCut);
+  mcCR.Selection(  pdgId, 0, 0, 20., ecaloCut, iasCut);
+  dataCR.Selection(pdgId, 0, 0, 20., ecaloCut, iasCut);
 
 
   double scaling = dataCR.histo->Integral()/mcCR.histo->Integral();
