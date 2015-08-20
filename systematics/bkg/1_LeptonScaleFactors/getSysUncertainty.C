@@ -130,44 +130,20 @@ public:
   };
 
   void getTreeVariables(){
+    tree->SetBranchStatus("*",0);
+    tree->SetBranchStatus("trackEta",1);
     tree->SetBranchAddress("trackEta",&trackEta);
+    tree->SetBranchStatus("trackPt",1);
     tree->SetBranchAddress("trackPt",&trackPt);
-    tree->SetBranchAddress("trackP",&trackP);
-    tree->SetBranchAddress("trackGenPt",&trackGenPt);
-    tree->SetBranchAddress("trackDeDxASmi",&trackASmi);
-    tree->SetBranchAddress("trackDeDxHarm2",&trackHarm2);
+    tree->SetBranchStatus("trackCaloIsolation",1);
     tree->SetBranchAddress("trackCaloIsolation",&trackCaloIso);
-    tree->SetBranchAddress("trackMass",&trackMass);
-    tree->SetBranchAddress("trackIsolation",&trackIsolation);
-    tree->SetBranchAddress("trackGenE",&trackGenE);
-    tree->SetBranchAddress("trackGenEt",&trackGenEt);
-    tree->SetBranchAddress("trackEndVertexRho",&trackEndVertexRho);
-    tree->SetBranchAddress("trackChi2",&trackChi2);
-    tree->SetBranchAddress("trackNdof",&trackNdof);
-    tree->SetBranchAddress("trackNLostOuter",&trackNLostOuter);
-    tree->SetBranchAddress("trackNLostInner",&trackNLostInner);
-    tree->SetBranchAddress("trackNLostMiddle",&trackNLostMiddle);
+    tree->SetBranchStatus("trackNValid",1);
     tree->SetBranchAddress("trackNValid",&trackNValid);
-    tree->SetBranchAddress("trackHCALRp5Isolation",&trackHCALRp5Isolation);
-    tree->SetBranchAddress("trackECALRp5Isolation",&trackECALRp5Isolation);
-    tree->SetBranchAddress("trackHCALRp4Isolation",&trackHCALRp4Isolation);
-    tree->SetBranchAddress("trackECALRp4Isolation",&trackECALRp4Isolation);
-    tree->SetBranchAddress("trackHCALRp3Isolation",&trackHCALRp3Isolation);
-    tree->SetBranchAddress("trackECALRp3Isolation",&trackECALRp3Isolation);
+    tree->SetBranchStatus("trackPdgId",1);
     tree->SetBranchAddress("trackPdgId",&trackPdgId);
-    tree->SetBranchAddress("MET",&met);
-    tree->SetBranchAddress("LeadingJetPt",&leadingJetPt);
+    tree->SetBranchStatus("weight*",1);
     tree->SetBranchAddress("weight",&weight);
     tree->SetBranchAddress("weight_xsec_lumi",&weight_xsec_lumi);
-    tree->SetBranchAddress("trackDeDx1",&trackDeDx1);
-    tree->SetBranchAddress("trackDeDx2",&trackDeDx2);
-    tree->SetBranchAddress("trackDeDx3",&trackDeDx3);
-    tree->SetBranchAddress("trackDeDx4",&trackDeDx4);
-    tree->SetBranchAddress("trackDx1",&trackDx1);
-    tree->SetBranchAddress("trackDx2",&trackDx2);
-    tree->SetBranchAddress("trackDx3",&trackDx3);
-    tree->SetBranchAddress("trackDx4",&trackDx4);
-    tree->SetBranchAddress("trackMeasSize",&trackMeasSize);
   };
 
 
@@ -177,9 +153,7 @@ public:
     purity=0;
     double auxWeight = 0;
     
-
-
-    histo= new TH1D("histo","histo",1,0,1);
+    histo= new TH1D("histo" + (TString) file->GetName(),"histo",1,0,1);
     histo->Sumw2();
 
     //cout<<"N events = "<<tree->GetEntries()<<endl;
@@ -279,6 +253,7 @@ int getSysUncertainty(int pdgId, double ptCut, double ecaloCut){
   dataSR.file -> GetObject(select , dataSR.tree);
   dataSR.getTreeVariables();
   dataCR.file -> GetObject(select , dataCR.tree);
+
   dataCR.getTreeVariables();
 
   mcSR.file = new TFile(inputScaleUnc + "/dytollAODSIM.root","READ");
@@ -291,35 +266,31 @@ int getSysUncertainty(int pdgId, double ptCut, double ecaloCut){
   wjetsSR.file = new TFile(inputScaleUnc + "/wjetsAODSIM.root","READ");
   wjetsSR.file -> GetObject(select , wjetsSR.tree);
   wjetsSR.getTreeVariables();
-
   wjetsCR.file -> GetObject(select , wjetsCR.tree);
   wjetsCR.getTreeVariables();
 
   // Different selections
   // For electrons and taus also the ecalo cut is removed in CRs
-  
-  cout<<endl<<"Selection data SR:"<<endl;
+  //cout<<endl<<"Selection data SR:"<<endl;
   dataSR.Selection(0, 1, pdgId, ptCut, ecaloCut);
-  
-  cout<<endl<<"Selection data CR:"<<endl;
+
+  //cout<<endl<<"Selection data CR:"<<endl;
   if(pdgId==13) dataCR.Selection(0, 1, pdgId, ptCut, ecaloCut);
   else          dataCR.Selection(0, 0, pdgId, ptCut, ecaloCut);
   
-  cout<<endl<<"Selection DytoLL MC SR:"<<endl;
+  //cout<<endl<<"Selection DytoLL MC SR:"<<endl;
   mcSR.Selection(  1, 1, pdgId, ptCut, ecaloCut);
   
-  cout<<endl<<"Selection DytoLL MC CR:"<<endl;
+  //cout<<endl<<"Selection DytoLL MC CR:"<<endl;
   if(pdgId==13) mcCR.Selection(  1, 1, pdgId, ptCut, ecaloCut);
   else          mcCR.Selection(  1, 0, pdgId, ptCut, ecaloCut);
-  
-  cout<<endl<<"Selection Wjets MC SR:"<<endl;
+
+  //cout<<endl<<"Selection Wjets MC SR:"<<endl;
   wjetsSR.Selection(  0, 1, pdgId, ptCut, ecaloCut);
   
-  cout<<endl<<"Selection Wjets MC CR:"<<endl;
+  //cout<<endl<<"Selection Wjets MC CR:"<<endl;
   if(pdgId==13) wjetsCR.Selection(  0, 1, pdgId, ptCut, ecaloCut);
   else          wjetsCR.Selection(  0, 0, pdgId, ptCut, ecaloCut);
-
-  
   
   double nSRData           =  dataSR.histo->GetBinContent(1);
   double nSRDataError      =  dataSR.histo->GetBinError(1);
