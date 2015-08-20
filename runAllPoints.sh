@@ -9,7 +9,7 @@ region="SR"
 ptArray=(20 25 30 35 40 45 50 55 60)
 iasArray=(0.00 0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40)
 
-find . -type f -name "*.log" -not -path "./limits/*" -not -path  "./systematics/signal/12_xsec/*" -not -path  "./systematics/signal/1_Luminosity/*"  -exec rm -f {} \;
+find . -type f -name "*.log" -not -path "./limits/*" -not -path  "./systematics/signal/12_xsec/*" -not -path  "./systematics/signal/1_Luminosity/*" -not -path  "./systematics/signal/10_TrkRecoEff/*"  -exec rm -f {} \;
 
 for ptCut in "${ptArray[@]}"
 do
