@@ -246,7 +246,11 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   //wjetsKin.file -> GetObject("chiTrackspreselectionNoQCDCutsNoTrigger/Variables",wjetsDT.tree);
   wjetsDT.getTreeVariables();
 
-  wjetsKin.Selection(0,0);
+  //wjetsKin.Selection(0,0);
+  wjetsKin.histo= new TH1D("wjetsKin","wjetsKin",1,0,1);
+  wjetsKin.histo->Sumw2();
+  wjetsKin.tree -> Draw("0.5>>wjetsKin","weight_xsec_lumi*weight");
+  wjetsKin.histo = (TH1D*) gPad->GetListOfPrimitives()->FindObject("wjetsKin");
   wjetsDT.Selection(0,1, ptCut, ecaloCut);
 
   
@@ -277,11 +281,14 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   dytomumuKin.file -> GetObject("chiTrackspreselectionTightMuons/Variables",dytomumuDT.tree);
   dytomumuDT.getTreeVariables();
 
-  dytomumuKin.Selection(0, 0);
+  //dytomumuKin.Selection(0, 0);
+  dytomumuKin.histo= new TH1D("dytomumuKin","dytomumuKin",1,0,1);
+  dytomumuKin.histo->Sumw2();
+  dytomumuKin.tree -> Draw("0.5>>dytomumuKin","weight_xsec_lumi*weight");
+  dytomumuKin.histo = (TH1D*) gPad->GetListOfPrimitives()->FindObject("dytomumuKin");
   dytomumuDT.Selection(0, 1, ptCut, ecaloCut);
 
   cout<<"###########################################################################"<<endl;
-  cout.precision(2);
   double intKinErrorMuMu = 0;
   double intKinMuMu      = dytomumuKin.histo -> IntegralAndError(1,1,intKinErrorMuMu);
   double intDTErrorMuMu = 0;
@@ -304,11 +311,14 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   dytoeeKin.file -> GetObject("chiTrackspreselectionTightElectrons/Variables",dytoeeDT.tree);
   dytoeeDT.getTreeVariables();
 
-  dytoeeKin.Selection();
+  //dytoeeKin.Selection();
+  dytoeeKin.histo= new TH1D("dytoeeKin","dytoeeKin",1,0,1);
+  dytoeeKin.histo->Sumw2();
+  dytoeeKin.tree -> Draw("0.5>>dytoeeKin","weight_xsec_lumi*weight");
+  dytoeeKin.histo = (TH1D*) gPad->GetListOfPrimitives()->FindObject("dytoeeKin");
   dytoeeDT.Selection(0, 1, ptCut, ecaloCut);
 
   cout<<"###########################################################################"<<endl;
-  cout.precision(2);
   double intKinErrorEE = 0;
   double intKinEE      = dytoeeKin.histo -> IntegralAndError(1,1,intKinErrorEE);
   double intDTErrorEE  = 0;
@@ -332,7 +342,6 @@ int getSysUncertainty(double ptCut, double ecaloCut){
   double fakeRateDytollError = dytollDT/dytollKin * sqrt( pow(dytollKinErr/dytollKin, 2)  +  pow(dytollDTErr/dytollDT, 2) ); 
   
   cout<<"###########################################################################"<<endl;
-  cout.precision(2);
   cout<<scientific<<"Number of events in kin. selection = "<<dytollKin<<" +/- "<<dytollKinErr<<endl;
   cout<<            "dytoll: Number of fakes            = "<<dytollDT<< " +/-$ "<<dytollDTErr<<endl;
   cout<<            "Fake rate from dytoll MC           = "<<scientific<<fakeRateDytoll<<" +/- "<<fakeRateDytollError<<endl;
