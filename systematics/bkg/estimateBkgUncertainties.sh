@@ -24,7 +24,7 @@ then
     echo "%%%%%%%%% electron_ptCutEq${ptCut}_ecaloCutEq${ecaloCut}.log does not exists: Estimate electron uncertainty: "
     echo ""
     root -l -b -q getSysUncertainty.C+"(11,${ptCut},${ecaloCut})" > logFiles/electron_ptCutEq${ptCut}_ecaloCutEq${ecaloCut}.log
-    cat logFiles/electron_${ptCut}.log
+    cat logFiles/electron_ptCutEq${ptCut}_ecaloCutEq${ecaloCut}.log
 fi
 if [ ! -f "logFiles/muon_ecaloCutEq${ecaloCut}.log" ] 
 then
@@ -32,7 +32,7 @@ then
     echo "%%%%%%%%% muon_ecaloCutEq${ecaloCut}.log does not exists: Estimate muon uncertainty: "
     echo ""
     root -l -b -q getSysUncertainty.C+"(13,20,${ecaloCut})"       > logFiles/muon_ecaloCutEq${ecaloCut}.log
-    cat logFiles/muon.log
+    cat logFiles//muon_ecaloCutEq${ecaloCut}.log
 fi
 cd ../
 ##########################################################################################################################################################
